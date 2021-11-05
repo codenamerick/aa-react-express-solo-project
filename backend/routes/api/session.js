@@ -29,6 +29,12 @@ router.post('/', asyncHandler(async (req, res, next) => {
     });
 }));
 
+// logout route below
+router.delete('/', (_req, res) => {
+    res.clearCookie('token');
+    return res.json({message: 'success'});
+});
+
 
 
 module.exports = router;
