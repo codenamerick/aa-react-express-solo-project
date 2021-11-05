@@ -1,8 +1,33 @@
 const router = require('express').Router();
+const asyncHandler = require('express-async-handler');
+const {User} = require('../../db/models');
+const { setTokenCookie, restoreUser, requireAuth } = require('../../utils/auth');
 
 router.post('/test', function(req, res) {
     res.json({requestBody: req.body});
 });
+
+// test user auth by testing the setTokenCookie function
+// router.get('/set-token-cookie', asyncHandler(async (req, res) => {
+//     const user = await User.findOne({
+//         where: {
+//             username: 'Demo-user'
+//         },
+//     });
+
+//     setTokenCookie(res, user);
+//     return res.json({user});
+// }));
+
+// test restore user by connecting middleware and checking req.user key
+// router.get('/restore-user', restoreUser, (req, res) => {
+//     return res.json(req.user);
+// });
+
+// test requireAuth below
+// router.get('/require-auth', requireAuth, (req, res) => {
+//     return res.json(req.user);
+// });
 
 // for testing this route on initial set up below
 
