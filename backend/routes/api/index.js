@@ -8,9 +8,9 @@ const usersRouter = require('./users');
 router.use('/session', sessionRouter);
 router.use('/users', usersRouter);
 
-router.post('/test', function(req, res) {
-    res.json({requestBody: req.body});
-});
+// router.post('/test', function(req, res) {
+//     res.json({requestBody: req.body});
+// });
 
 // test user auth by testing the setTokenCookie function
 // router.get('/set-token-cookie', asyncHandler(async (req, res) => {
