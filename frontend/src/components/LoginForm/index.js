@@ -22,9 +22,13 @@ const LoginForm = () => {
 
         setErrors([]);
 
-        return dispatch(sessionActions.login({credential, password}))
+        return dispatch(sessionActions.login({
+            credential,
+            password,
+        }))
             .catch(async (res) => {
                 const data = await res.json();
+
                 if (data && data.errors) {
                     setErrors(data.errors);
                 }
@@ -46,7 +50,7 @@ const LoginForm = () => {
                 Password
                 <input type='password' value={password} onChange={(e) => setPassword(e.target.value)} required />
             </label>
-            <button type='submit'>Log In</button>
+            <button>Log In</button>
         </form>
     );
 };
