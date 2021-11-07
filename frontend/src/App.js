@@ -3,6 +3,7 @@ import {Route, Switch} from 'react-router-dom';
 import { useDispatch } from "react-redux";
 import LoginForm from "./components/LoginForm";
 import SignupForm from "./components/SignupForm";
+import Navigation from './components/Navigation';
 import * as sessionActions from './store/session';
 
 function App() {
@@ -13,15 +14,20 @@ function App() {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
-  return  isLoaded && (
-    <Switch>
-      <Route path='/login'>
-        <LoginForm />
-      </Route>
-      <Route path='/signup'>
-        <SignupForm />
-      </Route>
-    </Switch>
+  return (
+    <>
+      <Navigation isLoaded={isLoaded} />
+      {isLoaded && (
+        <Switch>
+          <Route path='/login'>
+            <LoginForm />
+          </Route>
+          <Route path='/signup'>
+            <SignupForm />
+          </Route>
+        </Switch>
+      )}
+    </>
   );
 }
 
