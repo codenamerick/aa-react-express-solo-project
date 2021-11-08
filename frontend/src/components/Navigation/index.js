@@ -31,8 +31,14 @@ const Navigation = ({isLoaded}) => {
             <div>
                 <div className='nav-left'>
                     <ul>
+                        <li className='nav-logo'>
+                            <NavLink exact to='/'>Logo</NavLink>
+                        </li>
                         <li>
-                            <NavLink exact to='/'>Home</NavLink>
+                            <NavLink exact to='/'>Link</NavLink>
+                        </li>
+                        <li>
+                            <NavLink exact to='/'>Link</NavLink>
                         </li>
                     </ul>
                 </div>
