@@ -1,23 +1,23 @@
 import React, {useState} from "react";
 import * as sessionActions from '../../store/session';
-import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router";
-import './SignupForm.css';
+import { useDispatch } from "react-redux";
+// import { Redirect } from "react-router";
+// import './SignupForm.css';
 
 const SignupForm = () => {
     const dispatch = useDispatch();
-    const sessionUser = useSelector(state => state.session.user);
+    // const sessionUser = useSelector(state => state.session.user);
     const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [errors, setErrors] = useState([]);
 
-    if (sessionUser) {
-        return (
-            <Redirect to='/' />
-        );
-    }
+    // if (sessionUser) {
+    //     return (
+    //         <Redirect to='/' />
+    //     );
+    // }
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -51,22 +51,22 @@ const SignupForm = () => {
                     <li key={index}>{error}</li>
                 ))}
             </ul>
-            <label>
-                Email
+            <div className='input-wrapper'>
+                <label>Email</label>
                 <input type='email' value={email} onChange={(e) => setEmail(e.target.value)} required />
-            </label>
-            <label>
-                Username
+            </div>
+            <div className='input-wrapper'>
+                <label>Username</label>
                 <input type='type' value={username} onChange={(e) => setUsername(e.target.value)} required />
-            </label>
-            <label>
-                Password
+            </div>
+            <div className='input-wrapper'>
+                <label>Password</label>
                 <input type='password' value={password} onChange={(e) => setPassword(e.target.value)} required />
-            </label>
-            <label>
-                Confirm Password
+            </div>
+            <div className='input-wrapper'>
+                <label>Confirm Password</label>
                 <input type='password' value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
-            </label>
+            </div>
             <button>Sign Up</button>
         </form>
     );

@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import * as sessionActions from '../../store/session';
 import {useDispatch} from 'react-redux';
+import './LoginForm.css';
 
 const LoginForm = () => {
     const dispatch = useDispatch();
@@ -33,14 +34,14 @@ const LoginForm = () => {
                     <li key={index}>{error}</li>
                 ))}
             </ul>
-            <label>
-                Username or Email
-                <input type='text' value={credential} onChange={(e) => setCredential(e.target.value)} required />
-            </label>
-            <label>
-                Password
-                <input type='password' value={password} onChange={(e) => setPassword(e.target.value)} required />
-            </label>
+            <div className='input-wrapper'>
+                <label htmlFor='credential'>Username or Email</label>
+                <input type='text' name='credential' value={credential} onChange={(e) => setCredential(e.target.value)} required />
+            </div>
+            <div className='input-wrapper'>
+                <label htmlFor='password'>Password</label>
+                <input type='password' name='password' value={password} onChange={(e) => setPassword(e.target.value)} required />
+            </div>
             <button>Log In</button>
         </form>
     );

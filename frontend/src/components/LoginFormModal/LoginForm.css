@@ -1,1 +1,40 @@
+form {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    justify-content: center;
+}
 
+form ul {
+    color: #E916C7;
+    list-style: none;
+    text-align: center;
+}
+
+form li {
+    margin: 20px 0;
+}
+
+form .input-wrapper {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Abel', sans-serif;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+form .input-wrapper input {
+    border: 1px solid #C4C4C4;
+    padding: 7px 6px;
+    border-radius: 4px;
+    outline: none;
+    transition: all 250ms;
+}
+
+form .input-wrapper label {
+    margin-bottom: 3px;
+}
+
+form .input-wrapper input:focus {
+    border: 1px solid #E916C7;
+}
