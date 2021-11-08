@@ -5,6 +5,10 @@ form {
     justify-content: center;
 }
 
+form button {
+    margin-top: 4px;
+}
+
 form ul {
     color: #E916C7;
     list-style: none;
