@@ -20,11 +20,11 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [3, 256]
+        len: [3, 255]
       },
     },
     hashedPassword: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING.BINARY,
       allowNull: false,
       validate: {
         len: [60, 60]
@@ -90,6 +90,9 @@ module.exports = (sequelize, DataTypes) => {
 
   User.associate = function(models) {
     // associations can be defined here
+    User.hasMany(models.Album, {foreignKey: 'userId', onDelete: 'CASCADE', hooks: true});
+    User.hasMany(models.Song, {foreignKey: 'userId', onDelete: 'CASCADE', hooks: true});
+    User.hasMany(models.Comment, {foreignKey: 'userId', onDelete: 'CASCADE', hooks: true});
   };
   return User;
 };
