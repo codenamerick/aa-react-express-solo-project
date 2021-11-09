@@ -70,6 +70,7 @@ nav ul {
 .nav-logo a {
     background: #E916C7;
     color: #fff;
+    display: flex;
 }
 
 .nav-logo a:hover {

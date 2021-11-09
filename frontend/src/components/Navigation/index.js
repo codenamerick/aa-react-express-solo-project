@@ -32,7 +32,9 @@ const Navigation = ({isLoaded}) => {
                 <div className='nav-left'>
                     <ul>
                         <li className='nav-logo'>
-                            <NavLink exact to='/'>Logo</NavLink>
+                            <NavLink exact to='/'>
+                                <img src='/assets/soundwave-logo-wht.svg' alt='logo' />
+                            </NavLink>
                         </li>
                         <li>
                             <NavLink exact to='/'>Link</NavLink>
