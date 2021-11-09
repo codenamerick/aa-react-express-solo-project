@@ -27,12 +27,32 @@ const Navigation = ({isLoaded}) => {
     }
 
     return (
-        <ul>
-            <li>
-                <NavLink exact to='/'>Home</NavLink>
-                {isLoaded && sessionLinks}
-            </li>
-        </ul>
+        <nav>
+            <div>
+                <div className='nav-left'>
+                    <ul>
+                        <li className='nav-logo'>
+                            <NavLink exact to='/'>
+                                <img src='/assets/soundwave-logo-wht.svg' alt='logo' />
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink exact to='/'>Link</NavLink>
+                        </li>
+                        <li>
+                            <NavLink exact to='/'>Link</NavLink>
+                        </li>
+                    </ul>
+                </div>
+                <div className='nav-right'>
+                    <ul>
+                        <li>
+                            {isLoaded && sessionLinks}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
     );
 };
 

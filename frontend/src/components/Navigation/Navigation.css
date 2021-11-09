@@ -1,0 +1,129 @@
+nav {
+    background: #fff;
+    position: fixed;
+    top: 0%;
+    width: 100%;
+}
+
+nav > div {
+    display: flex;
+    width: 100%;
+    max-width: 1240px;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav ul {
+    align-items: center;
+    display: flex;
+}
+
+.nav-left li {
+    display: flex;
+}
+
+.nav-left a {
+    border-right: 1px solid #0F1010;
+    padding:12px 20px;
+    transition: all 250ms;
+}
+
+.nav-left a:hover {
+    background: #0F1010;
+    color: #fff;
+}
+
+.nav-right button {
+    margin-left: 10px;
+}
+
+.nav-right button:first-child {
+    background: #fff;
+    color: #0F1010;
+}
+
+.nav-right button:first-child:hover {
+    border: 1px solid #E916C7;
+    color: #E916C7;
+}
+
+.nav-right button:last-child {
+    background: #fff;
+    border: none;
+    color: #0F1010;
+    padding: 0;
+}
+
+.nav-right button:last-child:hover {
+    color: #E916C7;
+}
+
+.nav-right li {
+    position: relative;
+}
+
+.active {
+    color: #000;
+}
+
+.nav-logo a {
+    background: #E916C7;
+    color: #fff;
+    display: flex;
+}
+
+.nav-logo a:hover {
+    background: #E916C7;
+    color: #fff;
+}
+
+.profile-btn {
+    align-items: center;
+    border: none;
+    display: flex;
+    font-size: 34px;
+    padding: 0;
+    position: relative;
+    transition: all 250ms;
+    z-index: 1;
+}
+
+.profile-btn:hover {
+    border: none !important;
+    color: #0F1010 !important;
+    transform: scale(1.10);
+}
+
+.profile-dropdown {
+    align-items: flex-start;
+    background: #fff;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    position: absolute;
+    right: 0;
+}
+
+.profile-dropdown li {
+    margin-top: 10px;
+}
+
+.profile-dropdown button {
+    font-size: 16px;
+    margin: 0;
+}
+
+.profile-dropdown button:hover {
+    border: none !important;
+}
+
+/* --- Media queries below --- */
+
+@media screen and (max-width: 1260px) {
+    nav {
+        padding-right: 20px;
+    }
+}
