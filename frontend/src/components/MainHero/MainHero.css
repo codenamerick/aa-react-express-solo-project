@@ -1,0 +1,43 @@
+.hero-wrapper {
+    align-items: center;
+    background-image: url('./assets/soundwave-hero-bg.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    height: 85vh;
+    justify-content: center;
+    min-height: 600px;
+    padding-top: 45px;
+    text-align: center;
+    width: 100%;
+}
+
+.hero-wrapper > div {
+    padding: 20px;
+}
+
+.hero-wrapper h2, .hero-wrapper p {
+    color: #fff;
+}
+
+.hero-wrapper a {
+    border: 1px solid #fff;
+    border-radius: 4px;
+    color: #fff;
+    padding: 7px 8px;
+    transition: all 250ms;
+}
+
+.hero-wrapper a:hover {
+    background: #fff;
+    color: #E916C7;
+}
+
+.hero-wrapper h2 {
+    font-size: 48px;
+}
+
+.hero-wrapper p {
+    margin: 10px 0 24px 0;
+}
