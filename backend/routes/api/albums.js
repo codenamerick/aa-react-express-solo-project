@@ -31,14 +31,14 @@ const router = express.Router();
 //     handleValidationErrors,
 // ];
 
-// get songs route
+// get albums route
 router.get('/', asyncHandler(async (req, res) => {
-    const songs = await Song.findAll({
+    const albums = await Album.findAll({
         order: [['createdAt', 'DESC']],
     });
 
     return res.json({
-        songs,
+        albums,
     })
 }));
 
