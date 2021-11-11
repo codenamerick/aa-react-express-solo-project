@@ -1,0 +1,17 @@
+.songs-list-full-wrapper {
+    background: #fff;
+    padding: 40px;
+}
+
+.song-card {
+    width: 200px;
+    height: 300px;
+}
+
+.card-img-wrapper {
+    width: 100%;
+}
+
+.card-img-wrapper img {
+    width: 100%;
+}
