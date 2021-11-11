@@ -7,10 +7,9 @@ module.exports = (sequelize, DataTypes) => {
     },
     albumId: {
       type: DataTypes.INTEGER,
-      allowNull: false
     },
     imageUrl: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
       allowNull: false
     },
     songUrl: {

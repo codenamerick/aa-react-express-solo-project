@@ -1,8 +1,8 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
 
-// const {check} = require('express-validator');
-// const {handleValidationErrors} = require('../../utils/validation');
+const {check} = require('express-validator');
+const {handleValidationErrors} = require('../../utils/validation');
 
 const {requireAuth} = require('../../utils/auth');
 const db = require('../../db/models');
@@ -12,27 +12,24 @@ const id = db.User.id;
 const router = express.Router();
 
 
-// const validateSignup = [
-//     check('email')
-//         .exists({checkFalsy: true})
-//         .isEmail()
-//         .withMessage('Please provide a valid email.'),
-//     check('username')
-//         .exists({checkFalsy: true})
-//         .isLength({min: 4})
-//         .withMessage('Please provide a username with at least 4 characters.'),
-//     check('username')
-//         .not()
-//         .isEmail()
-//         .withMessage('Username cannot be an email.'),
-//     check('password')
-//         .exists({checkFalsy: true})
-//         .isLength({min: 6})
-//         .withMessage('Password must be 6 characters or more.'),
-//     handleValidationErrors,
-// ];
+const validateSong = [
+    check('imageUrl')
+        .exists({checkFalsy: true})
+        .isURL()
+        .withMessage('Please provide an image url.'),
+    check('songUrl')
+        .exists({checkFalsy: true})
+        .isURL()
+        .withMessage('Please provide a song url.'),
+    check('title')
+        .exists({checkFalsy: true})
+        .not()
+        .isEmpty()
+        .withMessage('Please provide a title for your song.'),
+    handleValidationErrors,
+];
 
-// get songs route
+// get all songs route
 router.get('/', asyncHandler(async (req, res) => {
     const songs = await Song.findAll({
         order: [['createdAt', 'DESC']],
@@ -43,16 +40,17 @@ router.get('/', asyncHandler(async (req, res) => {
     })
 }));
 
-// post song route
-router.post('/', asyncHandler(async (req, res) => {
-    const {userId, albumId, url, title} = req.body;
+// create song route
+router.post('/', requireAuth, validateSong, asyncHandler(async (req, res) => {
+    const {userId, albumId, imageUrl, songUrl, title} = req.body;
     const album = Album.findOne(id);
     const user = User.findOne(id);
 
     const newSong = await Song.create({
         userId,
         albumId,
-        url,
+        imageUrl,
+        songUrl,
         title,
         album,
         user
@@ -77,18 +75,13 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
 }));
 
 // edit song
-router.put('/:id(\\d+)', asyncHandler(async (req, res) => {
-    // const id = await Song.update(req.body);
-    // const song = await Song.one(id);
-    // const {title, url} = req.body
-    // console.log('req-body-------------: ', title, url);
-    console.log(req.body);
-
+router.put('/:id(\\d+)', requireAuth, validateSong, asyncHandler(async (req, res) => {
     const song = req.body;
     const updatedSong = await Song.findByPk(req.params.id);
 
     if (song) {
-        updatedSong.url = song.url;
+        updatedSong.imageUrl = song.imageUrl;
+        updatedSong.songUrl = song.songUrl;
         updatedSong.title = song.title;
 
         await updatedSong.save();
@@ -103,7 +96,7 @@ router.put('/:id(\\d+)', asyncHandler(async (req, res) => {
 }));
 
 // delete song
-router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
+router.delete('/:id(\\d+)', requireAuth, asyncHandler(async (req, res) => {
     const songId = req.params.id;
     const removedSong = await Song.findByPk(songId);
 
