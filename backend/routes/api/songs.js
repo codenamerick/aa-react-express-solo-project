@@ -33,6 +33,10 @@ const validateSong = [
 router.get('/', asyncHandler(async (req, res) => {
     const songs = await Song.findAll({
         order: [['createdAt', 'DESC']],
+        include: [{
+            model: User,
+            include: [{model: Album}]
+        }]
     });
 
     return res.json({
@@ -64,9 +68,10 @@ router.post('/', requireAuth, validateSong, asyncHandler(async (req, res) => {
 // get individual song
 router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
     const song = await Song.findByPk(req.params.id, {
-        include: {
-            model: Album
-        }
+        include: [{
+            model: User,
+            include: [{model: Album}]
+        }]
     });
 
     return res.json({

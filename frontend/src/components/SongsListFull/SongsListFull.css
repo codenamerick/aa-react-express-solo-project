@@ -3,9 +3,22 @@
     padding: 40px;
 }
 
+.songs-list-full-wrapper > div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 auto;
+}
+
 .song-card {
     width: 200px;
-    height: 300px;
+    margin: 10px 10px 14px 10px;
+}
+
+.song-card p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .card-img-wrapper {

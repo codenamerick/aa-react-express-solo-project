@@ -12,9 +12,6 @@ const load = (list) => ({
 
 export const getSongs = () => async (dispatch) => {
     const res = await csrfFetch('/api/songs');
-    // const list = await res.json();
-    // console.log('this is a list of songs -----', list);
-    // dispatch(load(list.songs));
 
     if (res.ok) {
         const list = await res.json();
@@ -22,24 +19,11 @@ export const getSongs = () => async (dispatch) => {
     }
 };
 
-const initialState = {
-    list: []
-};
-
-// const sortList = (list) => {
-//     return list
-//         .sort((songA, songB) => {
-//             return songA.id - songB.id
-//         })
-//         .map((song) => song.id);
-// };
-
 let newState = {};
 
-const songsReducer = (state = initialState, action) => {
+const songsReducer = (state = {}, action) => {
     switch (action.type) {
         case LOAD_SONGS:
-            // console.log('ACTION.LIST---', action.list);
             newState = {...state};
             action.list.forEach((song) => {
                 newState[song.id] = song;

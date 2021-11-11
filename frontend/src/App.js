@@ -5,6 +5,7 @@ import Navigation from './components/Navigation';
 import * as sessionActions from './store/session';
 import MainHero from "./components/MainHero";
 import SongsListFull from "./components/SongsListFull";
+import UploadSong from "./components/UploadSong";
 
 function App() {
   const dispatch = useDispatch();
@@ -22,6 +23,9 @@ function App() {
           <Route path= '/' exact>
             <MainHero />
             <SongsListFull />
+          </Route>
+          <Route path= '/upload'>
+            <UploadSong />
           </Route>
         </Switch>
       )}
