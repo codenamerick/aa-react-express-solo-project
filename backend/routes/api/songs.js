@@ -43,7 +43,7 @@ router.get('/', asyncHandler(async (req, res) => {
     })
 }));
 
-// post songs route
+// post song route
 router.post('/', asyncHandler(async (req, res) => {
     const {userId, albumId, url, title} = req.body;
     const album = Album.findOne(id);
@@ -63,7 +63,7 @@ router.post('/', asyncHandler(async (req, res) => {
     });
 }));
 
-// get song
+// get individual song
 router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
     const song = await Song.findByPk(req.params.id, {
         include: {
@@ -83,27 +83,29 @@ router.put('/:id(\\d+)', asyncHandler(async (req, res) => {
     // const {title, url} = req.body
     // console.log('req-body-------------: ', title, url);
     console.log(req.body);
-    // // return res.json(song);
-    // const song = await Song.findByPk(req.params.id);
-    // console.log('this is song: ', song);
 
-    // const updatedSong = await Song.update({
-    //     title,
-    //     url
-    // });
+    const song = req.body;
+    const updatedSong = await Song.findByPk(req.params.id);
 
-    // console.log('----------- this is updated song -----', updatedSong);
+    if (song) {
+        updatedSong.url = song.url;
+        updatedSong.title = song.title;
 
-    // const id = await Song.update(req.body);
+        await updatedSong.save();
 
-    // console.log(id);
+        return res.json({
+            updatedSong,
+            message: 'Success'
+        });
+    } else {
+        res.json({message: 'Failure'});
+    }
 }));
 
 // delete song
 router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
     const songId = req.params.id;
     const removedSong = await Song.findByPk(songId);
-    console.log('----------- deleted -------------', removedSong);
 
     if (removedSong) {
         await removedSong.destroy();
