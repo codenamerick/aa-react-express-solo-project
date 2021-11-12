@@ -9,8 +9,6 @@ const SongPortalFull = () => {
     const dispatch = useDispatch();
     const song = useSelector(state => Object.values(state.songs))
 
-    // const sessionUser = useSelector(state => state.session.user);
-
     useEffect(() => {
         dispatch(getSong(songId));
     }, [dispatch, songId]);

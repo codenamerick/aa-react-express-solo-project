@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import * as songActions from '../../store/songs';
-import {useParams} from 'react-router-dom';
+import {useParams, useHistory} from 'react-router-dom';
 import './SongEdit.css';
 
 const EditForm = () => {
@@ -13,61 +13,12 @@ const EditForm = () => {
     const [imageUrl, setImageUrl] = useState('');
     const [songUrl, setSongUrl] = useState('');
     const [errors, setErrors] = useState([]);
-    // const history = useHistory();
-
-    console.log('song id -------', songId);
-
-    // const reset = () => {
-    //     setTitle('');
-    //     setImageUrl('');
-    //     setSongUrl('');
-    // };
-
-    // const isURL = (string) => {
-    //     let url;
-
-    //     try {
-    //         url = new URL(string);
-    //     } catch(_) {
-    //         return false;
-    //     }
-
-    //     return url.protocol === 'http:' || url.protocol === 'https:';
-    // };
-
-    const validate = () => {
-        const validationErrors = [];
-        const url = /^(ftp|http|https):\/\/[^ "]+$/;
-        console.log(url.test('ftp://www.goole.com'))
-
-        if (!title) {
-            validationErrors.push('Please provide a Title.');
-        }
-
-        if (!url.test(imageUrl)) {
-            validationErrors.push('Please provide an Image Url.');
-        }
-
-        if (!url.test(songUrl)) {
-            validationErrors.push('Please provide a Song Url.');
-        }
-
-        return validationErrors;
-    };
+    const history = useHistory();
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
         setErrors([]);
-
-        const error = validate();
-        setErrors(error);
-
-        if (errors.length > 0) {
-            // setErrors(data.errors);
-            console.log('there are ERRORS!!!', errors);
-            return setErrors(errors);
-        }
 
         dispatch(songActions.editSong({
             id: songId,
@@ -76,16 +27,14 @@ const EditForm = () => {
             imageUrl,
             songUrl
         }))
-            // .catch(async (res) => {
-            //     const data = await res.json();
+            .then(() => history.push(`/songs/${songId}`))
+            .catch(async (res) => {
+                const data = await res.json();
 
-            //     if (data && data.errors) {
-            //         setErrors(data.errors);
-            //     }
-            // });
-
-        // reset();
-        // history.push(`/songs/${songId}`)
+                if (data && data.errors) {
+                    setErrors(data.errors);
+                }
+            });
     };
 
     return (

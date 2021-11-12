@@ -67,7 +67,6 @@ export const createSong = (data) => async (dispatch) => {
 };
 
 export const editSong = (data) => async (dispatch) => {
-    console.log('this is DATA-------: ', data);
     const res = await csrfFetch(`/api/songs/${data.id}`, {
         method: 'PUT',
         headers: {
@@ -78,7 +77,6 @@ export const editSong = (data) => async (dispatch) => {
 
     if (res.ok) {
         const song = await res.json();
-        console.log('_________----------', song.updatedSong.id);
         dispatch(updateSong(song));
         return res;
     }
@@ -117,7 +115,6 @@ const songsReducer = (state = {}, action) => {
                 [action.song.newSong.id]: action.song.newSong
             }
         case UPDATE_SONG:
-            console.log('ACTION.SONGGGGG-----', action);
             return {
                 ...state,
                 [action.song.updatedSong.id]: action.song.updatedSong
