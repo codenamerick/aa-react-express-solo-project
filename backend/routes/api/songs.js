@@ -82,7 +82,12 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
 // edit song
 router.put('/:id(\\d+)', requireAuth, validateSong, asyncHandler(async (req, res) => {
     const song = req.body;
-    const updatedSong = await Song.findByPk(req.params.id);
+    const updatedSong = await Song.findByPk(req.params.id, {
+        include: [{
+            model: User,
+            include: [{model: Album}]
+        }]
+    });
 
     if (song) {
         updatedSong.imageUrl = song.imageUrl;
@@ -90,7 +95,7 @@ router.put('/:id(\\d+)', requireAuth, validateSong, asyncHandler(async (req, res
         updatedSong.title = song.title;
 
         await updatedSong.save();
-
+        console.log('UPDATED SONG--:', updatedSong);
         return res.json({
             updatedSong,
             message: 'Success'
