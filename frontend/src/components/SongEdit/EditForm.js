@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import * as songActions from '../../store/songs';
-import {useParams, useHistory} from 'react-router-dom';
+import {useParams} from 'react-router-dom';
 import './SongEdit.css';
 
 const EditForm = () => {
@@ -13,7 +13,7 @@ const EditForm = () => {
     const [imageUrl, setImageUrl] = useState('');
     const [songUrl, setSongUrl] = useState('');
     const [errors, setErrors] = useState([]);
-    const history = useHistory();
+    // const history = useHistory();
 
     console.log('song id -------', songId);
 
@@ -23,35 +23,51 @@ const EditForm = () => {
     //     setSongUrl('');
     // };
 
-    // const validate = () => {
-    //     const validationErrors = [];
+    // const isURL = (string) => {
+    //     let url;
 
-    //     if (!title) {
-    //         validationErrors.push('Please provide a Title.');
+    //     try {
+    //         url = new URL(string);
+    //     } catch(_) {
+    //         return false;
     //     }
 
-    //     if (!imageUrl) {
-    //         validationErrors.push('Please provide an Image Url.');
-    //     }
-
-    //     if (!songUrl) {
-    //         validationErrors.push('Please provide a Song Url.');
-    //     }
-
-    //     return validationErrors;
+    //     return url.protocol === 'http:' || url.protocol === 'https:';
     // };
+
+    const validate = () => {
+        const validationErrors = [];
+        const url = /^(ftp|http|https):\/\/[^ "]+$/;
+        console.log(url.test('ftp://www.goole.com'))
+
+        if (!title) {
+            validationErrors.push('Please provide a Title.');
+        }
+
+        if (!url.test(imageUrl)) {
+            validationErrors.push('Please provide an Image Url.');
+        }
+
+        if (!url.test(songUrl)) {
+            validationErrors.push('Please provide a Song Url.');
+        }
+
+        return validationErrors;
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
         setErrors([]);
 
-        // const errors = validate();
+        const error = validate();
+        setErrors(error);
 
-        // if (errors.length > 0) {
-        //     // setErrors(data.errors);
-        //     return setErrors(errors);
-        // }
+        if (errors.length > 0) {
+            // setErrors(data.errors);
+            console.log('there are ERRORS!!!', errors);
+            return setErrors(errors);
+        }
 
         dispatch(songActions.editSong({
             id: songId,
@@ -60,24 +76,24 @@ const EditForm = () => {
             imageUrl,
             songUrl
         }))
-            .catch(async (res) => {
-                const data = await res.json();
+            // .catch(async (res) => {
+            //     const data = await res.json();
 
-                if (data && data.errors) {
-                    setErrors(data.errors);
-                }
-            });
+            //     if (data && data.errors) {
+            //         setErrors(data.errors);
+            //     }
+            // });
 
         // reset();
-        history.push(`/songs/${songId}`)
+        // history.push(`/songs/${songId}`)
     };
 
     return (
         <div>
             <form onSubmit={handleSubmit}>
                 <ul>
-                    {errors.map((error, index) => (
-                        <li key={index}>{error}</li>
+                    {errors.map((error) => (
+                        <li key={error}>{error}</li>
                     ))}
                 </ul>
                 <div className='input-wrapper'>
