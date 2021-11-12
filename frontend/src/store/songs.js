@@ -10,12 +10,34 @@ const load = (list) => ({
     list
 });
 
+const addOneSong = (song) => ({
+    type: CREATE_SONG,
+    song
+});
+
 export const getSongs = () => async (dispatch) => {
     const res = await csrfFetch('/api/songs');
 
     if (res.ok) {
         const list = await res.json();
         dispatch(load(list.songs));
+    }
+};
+
+export const createSong = (data) => async (dispatch) => {
+    const res = await csrfFetch('/api/songs', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    });
+
+    if (res.ok) {
+        const song = await res.json();
+        dispatch(addOneSong(song));
+
+        return song;
     }
 };
 
@@ -30,6 +52,11 @@ const songsReducer = (state = {}, action) => {
             });
 
             return newState;
+        case CREATE_SONG:
+            return {
+                    ...state,
+                    [action.song.newSong.id]: action.song.newSong
+                }
         default:
             return state;
     }

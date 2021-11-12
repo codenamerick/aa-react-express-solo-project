@@ -27,7 +27,7 @@ const SongsListFull = () => {
                                 <img src={song.imageUrl} alt='song art' />
                             </div>
                             <p>{song.title}</p>
-                            <p>{song.User.username}</p>
+                            <p>{song.User?.username}</p>
                         </li>
                     );
                 })}
