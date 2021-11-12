@@ -6,7 +6,7 @@ import * as sessionActions from '../../store/songs';
 const SongDelete = () => {
     const {songId} = useParams();
     const song = useSelector(state => Object.values(state.songs))
-    console.log('song OBJECT!!-------- : ', song);
+
     const dispatch = useDispatch();
     const history = useHistory();
 

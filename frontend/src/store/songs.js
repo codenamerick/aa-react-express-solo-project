@@ -90,8 +90,6 @@ export const deleteSong = (song) => async (dispatch) => {
     });
     console.log('THIS IS RES', res)
     if (res.ok) {
-        // const song = await res.json();
-        console.log('STORE DELETE-------!!!', song);
         dispatch(remove(song));
     }
 };
@@ -123,7 +121,6 @@ const songsReducer = (state = {}, action) => {
                 [action.song.updatedSong.id]: action.song.updatedSong
             }
         case DELETE_SONG: {
-            console.log('THIS IS MY ACTION_________---------______--- : ', action.song[0]);
             newState = {...state};
             delete newState[action.song[0].id];
             return newState;
