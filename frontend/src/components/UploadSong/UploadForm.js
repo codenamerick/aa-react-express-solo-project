@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import * as songActions from '../../store/songs';
+import { useHistory } from 'react-router';
 import './UploadSong.css';
 
 const UploadForm = () => {
@@ -11,6 +12,7 @@ const UploadForm = () => {
     const [imageUrl, setImageUrl] = useState('');
     const [songUrl, setSongUrl] = useState('');
     const [errors, setErrors] = useState([]);
+    const history = useHistory();
 
     const reset = () => {
         setTitle('');
@@ -29,6 +31,7 @@ const UploadForm = () => {
             imageUrl,
             songUrl
         }))
+            .then(() => history.push(`/songs`))
             .catch(async (res) => {
                 const data = await res.json();
 

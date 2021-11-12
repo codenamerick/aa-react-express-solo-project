@@ -15,6 +15,12 @@ const EditForm = () => {
     const [errors, setErrors] = useState([]);
     const history = useHistory();
 
+    const reset = () => {
+        setTitle('');
+        setImageUrl('');
+        setSongUrl('');
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -35,6 +41,8 @@ const EditForm = () => {
                     setErrors(data.errors);
                 }
             });
+
+        reset();
     };
 
     return (
