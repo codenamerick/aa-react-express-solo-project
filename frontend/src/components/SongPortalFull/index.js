@@ -1,16 +1,14 @@
 import {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {useParams, useHistory, Redirect} from 'react-router-dom';
+import {useParams, useHistory} from 'react-router-dom';
 import { getSong } from '../../store/songs';
 import SongDelete from '../SongDelete';
-// import EditForm from '../SongEdit/EditForm';
 import './SongPortalFull.css';
 
 const SongPortalFull = () => {
     const {songId} = useParams();
     const dispatch = useDispatch();
-    // const sessionUser = useSelector(state => state.session.user);
-    const song = useSelector(state => Object.values(state.songs))
+    const song = useSelector(state => Object.values(state.songs));
     const history = useHistory();
 
     useEffect(() => {
@@ -23,19 +21,8 @@ const SongPortalFull = () => {
 
     const songObj = song[0];
 
-    // const history = useHistory();
-
-    // let editForm;
-
     const handleEditBtn = (songId) => {
-        history.push(`/photos/${songId}/edit`);
-        // if (sessionUser) {
-        //     editForm= (
-        //         <EditForm />
-        //     );
-        //     console.log('sesssssion user: ------- ', sessionUser);
-        // }
-        // <Redirect to='/songs/:songId/edit' />
+        history.push(`/songs/${songId}/edit`);
     };
 
     return (

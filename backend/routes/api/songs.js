@@ -109,10 +109,11 @@ router.put('/:id(\\d+)', requireAuth, validateSong, asyncHandler(async (req, res
 router.delete('/:id(\\d+)', requireAuth, asyncHandler(async (req, res) => {
     const songId = req.params.id;
     const removedSong = await Song.findByPk(songId);
-
+    console.log('----------REMOVE SONG-----', removedSong);
     if (removedSong) {
         await removedSong.destroy();
-        res.json({message: 'Success'});
+        res.status(204).end()
+        // res.json({message: 'Success'});
     } else {
         res.json({message: 'Failure'});
     }

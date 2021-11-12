@@ -1,28 +1,17 @@
 import React from 'react';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import { useHistory, useParams } from 'react-router';
 import * as sessionActions from '../../store/songs';
 
-const SongDelete = ({user}) => {
+const SongDelete = () => {
     const {songId} = useParams();
-    console.log('song id-------- : ', songId);
+    const song = useSelector(state => Object.values(state.songs))
+    console.log('song OBJECT!!-------- : ', song);
     const dispatch = useDispatch();
     const history = useHistory();
 
-    // useEffect(() => {
-    //     if (!showMenu) return;
-
-    //     const closeMenu = () => {
-    //         setShowMenu(false);
-    //     };
-
-    //     document.addEventListener('click', closeMenu);
-
-    //     return () => document.removeEventListener('click', closeMenu);
-    // }, [showMenu]);
-
     const handleDelete = (songId) => {
-        dispatch(sessionActions.deleteSong(songId));
+        dispatch(sessionActions.deleteSong(song));
 
         history.push('/songs');
     };
