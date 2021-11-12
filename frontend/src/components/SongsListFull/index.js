@@ -1,15 +1,15 @@
 import {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import { getSongs } from '../../store/songs';
+import { getAllSongs } from '../../store/songs';
 import './SongsListFull.css';
 
 const SongsListFull = () => {
     const dispatch = useDispatch();
 
     const songs = useSelector(state => Object.values(state.songs))
-
+    
     useEffect(() => {
-        dispatch(getSongs());
+        dispatch(getAllSongs());
     }, [dispatch]);
 
     if (!songs) {
