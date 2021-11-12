@@ -83,11 +83,12 @@ export const editSong = (data) => async (dispatch) => {
 };
 
 export const deleteSong = (songId) => async (dispatch) => {
-    const res = await fetch(`/api/songs/${songId}`, {
+    const res = await csrfFetch(`/api/songs/${songId}`, {
         method: 'DELETE'
     });
 
     if (res.ok) {
+        console.log('STORE DELETE', res);
         const song = await res.json();
         dispatch(remove(song.id));
     }
@@ -119,6 +120,11 @@ const songsReducer = (state = {}, action) => {
                 ...state,
                 [action.song.updatedSong.id]: action.song.updatedSong
             }
+        case DELETE_SONG: {
+            newState = {...state};
+            delete newState[action.songId];
+            return newState;
+        }
         default:
             return state;
     }
