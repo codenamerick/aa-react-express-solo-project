@@ -1,25 +1,27 @@
 import {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {useParams, useHistory} from 'react-router-dom';
-import { getSong } from '../../store/songs';
+import { getAllSongs } from '../../store/songs';
 import SongDelete from '../SongDelete';
 import './SongPortalFull.css';
 
 const SongPortalFull = () => {
     const {songId} = useParams();
     const dispatch = useDispatch();
-    const song = useSelector(state => Object.values(state.songs));
+    const song = useSelector(state => (state.songs));
     const history = useHistory();
 
     useEffect(() => {
-        dispatch(getSong(songId));
+        dispatch(getAllSongs());
     }, [dispatch, songId]);
 
-    if (!song) {
-        return null;
+    if (!song.songId) {
+        console.log('THERE ARE NO SONGS');
+    } else {
+        console.log('not empty!!!!!');
     }
 
-    const songObj = song[0];
+    const songObj = song[songId];
 
     const handleEditBtn = (songId) => {
         history.push(`/songs/${songId}/edit`);
@@ -39,7 +41,7 @@ const SongPortalFull = () => {
                     </div>
                     <div>
                         <button onClick={() => handleEditBtn(songId)}>Edit</button>
-                        <SongDelete />
+                        <SongDelete songId = {songId}/>
                     </div>
                 </div>
             </div>

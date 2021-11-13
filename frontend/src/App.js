@@ -38,6 +38,9 @@ function App() {
           <Route path= '/upload'>
             <UploadSong />
           </Route>
+          <Route path= '/'>
+            <p>Page Not Found</p>
+          </Route>
         </Switch>
       )}
     </>

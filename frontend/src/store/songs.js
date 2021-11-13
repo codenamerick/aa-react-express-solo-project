@@ -26,9 +26,9 @@ const updateSong = (song) => ({
     song
 });
 
-const remove = (song) => ({
+const remove = (id) => ({
     type: DELETE_SONG,
-    song
+    id
 });
 
 export const getAllSongs = () => async (dispatch) => {
@@ -82,15 +82,13 @@ export const editSong = (data) => async (dispatch) => {
     }
 };
 
-export const deleteSong = (song) => async (dispatch) => {
-    const songId = song[0].id;
-    console.log('STORE SONG ID:::', song);
-    const res = await csrfFetch(`/api/songs/${songId}`, {
+export const deleteSong = (id) => async (dispatch) => {
+    const res = await csrfFetch(`/api/songs/${id}`, {
         method: 'DELETE'
     });
-    console.log('THIS IS RES', res)
+
     if (res.ok) {
-        dispatch(remove(song));
+        dispatch(remove(id));
     }
 };
 
@@ -122,7 +120,7 @@ const songsReducer = (state = {}, action) => {
             }
         case DELETE_SONG: {
             newState = {...state};
-            delete newState[action.song[0].id];
+            delete newState[action.id];
             return newState;
         }
         default:

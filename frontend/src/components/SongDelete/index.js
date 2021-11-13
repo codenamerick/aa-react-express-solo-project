@@ -1,17 +1,14 @@
 import React from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import { useHistory, useParams } from 'react-router';
+import {useDispatch} from 'react-redux';
+import { useHistory } from 'react-router';
 import * as sessionActions from '../../store/songs';
 
-const SongDelete = () => {
-    const {songId} = useParams();
-    const song = useSelector(state => Object.values(state.songs))
-
+const SongDelete = ({songId}) => {
     const dispatch = useDispatch();
     const history = useHistory();
 
     const handleDelete = (songId) => {
-        dispatch(sessionActions.deleteSong(song));
+        dispatch(sessionActions.deleteSong(songId));
 
         history.push('/songs');
     };

@@ -1,13 +1,14 @@
 import {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import { getAllSongs } from '../../store/songs';
+import {Link} from 'react-router-dom';
 import './SongsListFull.css';
 
 const SongsListFull = () => {
     const dispatch = useDispatch();
 
     const songs = useSelector(state => Object.values(state.songs))
-    
+
     useEffect(() => {
         dispatch(getAllSongs());
     }, [dispatch]);
@@ -25,8 +26,11 @@ const SongsListFull = () => {
                         <li key={song.id} className='song-card'>
                             <div className='card-img-wrapper'>
                                 <img src={song.imageUrl} alt='song art' />
+                                <div className='play-action-overlay'></div>
                             </div>
-                            <p>{song.title}</p>
+                            <Link to={{pathname: `/songs/${song.id}`}}>
+                                <p>{song.title}</p>
+                            </Link>
                             <p>{song.User?.username}</p>
                         </li>
                     );
