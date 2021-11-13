@@ -24,8 +24,8 @@ const SongsListFull = () => {
                 {songs.map((song) => {
                     return (
                         <li key={song.id} className='song-card'>
-                            <div className='card-img-wrapper'>
-                                <img src={song.imageUrl} alt='song art' />
+                            <div className='card-img-wrapper' style={{backgroundImage:'url(' + song.imageUrl + ')'}}>
+                                {/* <img src={song.imageUrl} alt='song art' /> */}
                                 <div className='play-action-overlay'></div>
                             </div>
                             <Link to={{pathname: `/songs/${song.id}`}}>

@@ -8,6 +8,7 @@ import SongsListFull from "./components/SongsListFull";
 import SongPortalFull from "./components/SongPortalFull";
 import UploadSong from "./components/UploadSong";
 import SongEdit from "./components/SongEdit";
+import Player from "./components/Player";
 
 function App() {
   const dispatch = useDispatch();
@@ -25,12 +26,14 @@ function App() {
           <Route path= '/' exact>
             <MainHero />
             <SongsListFull />
+            <Player />
           </Route>
           <Route path= '/songs' exact>
             <SongsListFull />
           </Route>
           <Route path= '/songs/:songId' exact>
             <SongPortalFull />
+            <Player />
           </Route>
           <Route path= '/songs/:songId/edit' exact>
             <SongEdit />
