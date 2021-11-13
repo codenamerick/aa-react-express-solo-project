@@ -4,7 +4,7 @@ import './SongEdit.css';
 
 const SongEdit = () => {
     const sessionUser = useSelector(state => state.session.user);
-
+    console.log(sessionUser);
     let editForm;
 
     if (sessionUser) {

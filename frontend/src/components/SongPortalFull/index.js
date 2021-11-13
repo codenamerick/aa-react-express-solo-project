@@ -8,6 +8,7 @@ import './SongPortalFull.css';
 const SongPortalFull = () => {
     const {songId} = useParams();
     const dispatch = useDispatch();
+    const user = useSelector(state => (state.session.user));
     const song = useSelector(state => (state.songs));
     const history = useHistory();
 
@@ -27,6 +28,19 @@ const SongPortalFull = () => {
         history.push(`/songs/${songId}/edit`);
     };
 
+    let songEditBtns;
+
+    if (songObj?.User.id === user?.id) {
+        songEditBtns = (
+            <>
+                <button onClick={() => handleEditBtn(songId)}>Edit</button>
+                <SongDelete songId = {songId}/>
+            </>
+        );
+    } else {
+        console.log('not winning :(');
+    }
+
     return (
         <div className='songs-list-full-wrapper'>
             <h2>Song</h2>
@@ -40,8 +54,7 @@ const SongPortalFull = () => {
                         <p>{songObj?.User.username}</p>
                     </div>
                     <div>
-                        <button onClick={() => handleEditBtn(songId)}>Edit</button>
-                        <SongDelete songId = {songId}/>
+                        {songEditBtns}
                     </div>
                 </div>
             </div>

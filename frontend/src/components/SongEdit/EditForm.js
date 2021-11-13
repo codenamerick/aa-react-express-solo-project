@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import * as songActions from '../../store/songs';
-import {useParams, useHistory} from 'react-router-dom';
+import {useParams, useHistory, Link} from 'react-router-dom';
 import './SongEdit.css';
 
 const EditForm = () => {
@@ -67,6 +67,7 @@ const EditForm = () => {
                 </div>
                 <button>Save</button>
             </form>
+            <Link to={{pathname: `/songs/${songId}`}}>Cancel</Link>
         </div>
     );
 };
