@@ -20,7 +20,7 @@ const UploadSong = () => {
     }
 
     return (
-        <div className='songs-list-full-wrapper'>
+        <div className='songs-form'>
             {invite}
             {uploadForm}
         </div>

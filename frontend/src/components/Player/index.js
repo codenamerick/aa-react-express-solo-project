@@ -8,7 +8,6 @@ import './Player.css';
 const Player = () => {
     const song = useSelector(state => (state.player.song));
     // const songObj = useSelector(state => (state.songs));
-    console.log('SONG FROM PLAYER______: ', song);
 
     if (!song) return null;
 

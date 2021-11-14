@@ -33,7 +33,7 @@ const SongsListFull = () => {
                             <div className='card-img-wrapper' style={{backgroundImage:'url(' + song.imageUrl + ')'}}>
                                 <div className='play-action-overlay'>
                                     <button className='primary-play-btn list-style-play-btn' onClick={() => playSongBtn(song)}>
-                                    <i class="fas fa-play"></i>
+                                    <i className="fas fa-play"></i>
                                     </button>
                                 </div>
                             </div>

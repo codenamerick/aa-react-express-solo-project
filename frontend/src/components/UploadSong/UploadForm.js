@@ -63,7 +63,9 @@ const UploadForm = () => {
                     <label htmlFor='songUrl'>Song Url</label>
                     <input type='text' name='songUrl' value={songUrl} onChange={(e) => setSongUrl(e.target.value)} required />
                 </div>
-                <button>Upload</button>
+                <div className='form-btn-wrapper'>
+                    <button>Upload</button>
+                </div>
             </form>
         </div>
     );

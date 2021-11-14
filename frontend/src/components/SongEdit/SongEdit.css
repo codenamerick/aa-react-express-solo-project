@@ -1,0 +1,32 @@
+.songs-form {
+    align-items: center;
+    background: #0F1010;
+    color: #fff;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    padding: 45px 20px 20px;
+}
+
+.songs-form > div {
+    max-width: 750px;
+    width: 100%;
+}
+
+.songs-form form {
+    border-radius: 4px;
+    width: 100%;
+}
+
+.songs-form form input {
+    background: #fff;
+    border: 1px solid #fff;
+}
+
+.songs-form button {
+    margin-right: 10px;
+}
+
+.songs-form .form-btn-wrapper {
+    text-align: center;
+}

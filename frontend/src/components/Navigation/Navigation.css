@@ -27,6 +27,7 @@ nav ul {
 
 .nav-left a {
     border-right: 1px solid #0F1010;
+    color: #0F1010;
     padding:12px 20px;
     transition: all 250ms;
 }

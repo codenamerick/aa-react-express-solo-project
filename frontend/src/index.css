@@ -19,16 +19,21 @@ li {
     list-style: none;
 }
 
-button {
+button, .main-btn {
     background: #0F1010;
     border: 1px solid #0F1010;
     border-radius: 4px;
     color: #fff;
+    font-size: 14px;
     padding: 7px 8px;
     transition: all 250ms;
 }
 
-button:hover {
+/* .main-btn {
+    font-size: 14px;
+} */
+
+button:hover, .main-btn:hover {
     background: #fff;
     color: #0F1010;
     cursor: pointer;

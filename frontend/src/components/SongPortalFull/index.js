@@ -53,7 +53,7 @@ const SongPortalFull = () => {
                 <div className='portal-song-details'>
                     <div>
                         <button className='primary-play-btn' onClick={() => playSongBtn(songObj)}>
-                            <i class="fas fa-play"></i>
+                            <i className="fas fa-play"></i>
                         </button>
                         <div>
                             <h2>{songObj?.title}</h2>

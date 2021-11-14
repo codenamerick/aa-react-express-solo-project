@@ -15,11 +15,11 @@ const EditForm = () => {
     const [errors, setErrors] = useState([]);
     const history = useHistory();
 
-    const reset = () => {
-        setTitle('');
-        setImageUrl('');
-        setSongUrl('');
-    };
+    // const reset = () => {
+    //     setTitle('');
+    //     setImageUrl('');
+    //     setSongUrl('');
+    // };
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -42,7 +42,7 @@ const EditForm = () => {
                 }
             });
 
-        reset();
+        // reset();
     };
 
     return (
@@ -65,9 +65,11 @@ const EditForm = () => {
                     <label htmlFor='songUrl'>Song Url</label>
                     <input type='text' name='songUrl' value={songUrl} onChange={(e) => setSongUrl(e.target.value)} required />
                 </div>
-                <button>Save</button>
+                <div className='form-btn-wrapper'>
+                    <button>Save</button>
+                    <Link className='main-btn' to={{pathname: `/songs/${songId}`}}>Cancel</Link>
+                </div>
             </form>
-            <Link to={{pathname: `/songs/${songId}`}}>Cancel</Link>
         </div>
     );
 };
