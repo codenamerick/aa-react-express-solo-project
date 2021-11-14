@@ -1,5 +1,6 @@
 nav {
     background: #fff;
+    box-shadow: 0 10px 25px rgb(0 0 0 / 30%), 0 20px 48px rgb(0 0 0 / 16%), 0 1px 4px rgb(0 0 0 / 12%);
     position: fixed;
     top: 0%;
     width: 100%;
