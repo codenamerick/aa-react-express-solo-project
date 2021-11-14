@@ -32,7 +32,9 @@ const SongsListFull = () => {
                         <li key={song.id} className='song-card'>
                             <div className='card-img-wrapper' style={{backgroundImage:'url(' + song.imageUrl + ')'}}>
                                 <div className='play-action-overlay'>
-                                    <button onClick={() => playSongBtn(song)}>Play</button>
+                                    <button className='primary-play-btn list-style-play-btn' onClick={() => playSongBtn(song)}>
+                                    <i class="fas fa-play"></i>
+                                    </button>
                                 </div>
                             </div>
                             <Link to={{pathname: `/songs/${song.id}`}}>

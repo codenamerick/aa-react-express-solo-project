@@ -50,20 +50,22 @@ const SongPortalFull = () => {
     return (
         <div className='song-portal-lrg'>
             <div>
-                <div className='song-img-lrg' style={{backgroundImage:'url(' + songObj?.imageUrl + ')'}}>
-                    {/* <img src={songObj?.imageUrl} alt='song art' /> */}
-                </div>
-                <div>
+                <div className='portal-song-details'>
                     <div>
-                        <button onClick={() => playSongBtn(songObj)}>Play</button>
+                        <button className='primary-play-btn' onClick={() => playSongBtn(songObj)}>
+                            <i class="fas fa-play"></i>
+                        </button>
                         <div>
-                            <p>{songObj?.title}</p>
-                            <p>{songObj?.User.username}</p>
+                            <h2>{songObj?.title}</h2>
+                            <h3>{songObj?.User.username}</h3>
                         </div>
                     </div>
                     <div>
                         {songEditBtns}
                     </div>
+                </div>
+                <div className='song-img-lrg' style={{backgroundImage:'url(' + songObj?.imageUrl + ')'}}>
+                    {/* <img src={songObj?.imageUrl} alt='song art' /> */}
                 </div>
             </div>
         </div>

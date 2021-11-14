@@ -1,6 +1,6 @@
 .songs-list-full-wrapper {
     background: #fff;
-    padding: 40px;
+    padding: 40px 10px 120px;
 }
 
 .songs-list-full-wrapper > div {
@@ -49,4 +49,8 @@
 
 .play-action-overlay:hover {
     opacity: 1;
+}
+
+.play-action-overlay .list-style-play-btn {
+    margin-bottom: 0;
 }
