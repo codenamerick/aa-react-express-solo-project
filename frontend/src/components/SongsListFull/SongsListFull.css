@@ -1,6 +1,11 @@
 .songs-list-full-wrapper {
     background: #fff;
-    padding: 40px 10px 120px;
+    padding: 60px 10px 120px;
+}
+
+.songs-list-full-wrapper h2 {
+    margin-bottom: 28px;
+    text-align: center;
 }
 
 .songs-list-full-wrapper > div {
@@ -11,7 +16,7 @@
 }
 
 .song-card {
-    width: 200px;
+    width: 294px;
     margin: 10px 10px 14px 10px;
 }
 
@@ -25,7 +30,8 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 200px;
+    height: 294px;
+    margin-bottom: 10px;
     position: relative;
     width: 100%;
 }
@@ -53,4 +59,17 @@
 
 .play-action-overlay .list-style-play-btn {
     margin-bottom: 0;
+}
+
+.song-link-text {
+    color: #0F1010;
+    transition: all 250ms;
+}
+
+.song-link-text:hover {
+    color: #E916C7;
+}
+
+.song-user-link-text {
+    color: #C4C4C4;
 }

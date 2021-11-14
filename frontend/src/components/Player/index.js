@@ -2,6 +2,7 @@ import React from 'react';
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 import { useSelector } from 'react-redux';
+import {Link} from 'react-router-dom';
 import './Player.css';
 
 const Player = () => {
@@ -23,7 +24,9 @@ const Player = () => {
                 <div className='song-art-sm' style={{backgroundImage:'url(' + song.imageUrl + ')'}}></div>
                 <div className='song-details-sm'>
                     <p className='song-username-sm'>{song.User.username}</p>
-                    <p className='song-title-sm'>{song.title}</p>
+                    <Link className='song-link-text song-title-sm' to={{pathname: `/songs/${song.id}`}}>
+                                <p>{song.title}</p>
+                            </Link>
                 </div>
             </div>
         </div>

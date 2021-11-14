@@ -25,7 +25,7 @@ const SongsListFull = () => {
 
     return (
         <div className='songs-list-full-wrapper'>
-            <h2>Songs List</h2>
+            <h2>Listen to the latest uploads below.</h2>
             <div>
                 {songs.map((song) => {
                     return (
@@ -37,10 +37,10 @@ const SongsListFull = () => {
                                     </button>
                                 </div>
                             </div>
-                            <Link to={{pathname: `/songs/${song.id}`}}>
+                            <Link className='song-link-text' to={{pathname: `/songs/${song.id}`}}>
                                 <p>{song.title}</p>
                             </Link>
-                            <p>{song.User?.username}</p>
+                            <p className='song-user-link-text'>{song.User?.username}</p>
                         </li>
                     );
                 })}
