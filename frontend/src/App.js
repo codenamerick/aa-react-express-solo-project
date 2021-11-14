@@ -22,29 +22,30 @@ function App() {
     <>
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
-        <Switch>
-          <Route path= '/' exact>
-            <MainHero />
-            <SongsListFull />
-            <Player />
-          </Route>
-          <Route path= '/songs' exact>
-            <SongsListFull />
-          </Route>
-          <Route path= '/songs/:songId' exact>
-            <SongPortalFull />
-            <Player />
-          </Route>
-          <Route path= '/songs/:songId/edit' exact>
-            <SongEdit />
-          </Route>
-          <Route path= '/upload'>
-            <UploadSong />
-          </Route>
-          <Route path= '/'>
-            <p>Page Not Found</p>
-          </Route>
-        </Switch>
+        <>
+          <Switch>
+            <Route path= '/' exact>
+              <MainHero />
+              <SongsListFull />
+            </Route>
+            <Route path= '/songs' exact>
+              <SongsListFull />
+            </Route>
+            <Route path= '/songs/:songId' exact>
+              <SongPortalFull />
+            </Route>
+            <Route path= '/songs/:songId/edit' exact>
+              <SongEdit />
+            </Route>
+            <Route path= '/upload'>
+              <UploadSong />
+            </Route>
+            <Route path= '/'>
+              <p>Page Not Found</p>
+            </Route>
+          </Switch>
+          <Player />
+        </>
       )}
     </>
   );

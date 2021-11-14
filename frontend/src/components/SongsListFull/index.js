@@ -1,8 +1,9 @@
-import {useEffect} from 'react';
+import {useCallback, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import { getAllSongs } from '../../store/songs';
 import {Link} from 'react-router-dom';
 import './SongsListFull.css';
+import { playSong } from '../../store/player';
 
 const SongsListFull = () => {
     const dispatch = useDispatch();
@@ -11,6 +12,11 @@ const SongsListFull = () => {
 
     useEffect(() => {
         dispatch(getAllSongs());
+    }, [dispatch]);
+
+    const playSongBtn = useCallback((song) => {
+        console.log('SONG URL!---: ', song);
+        dispatch(playSong(song));
     }, [dispatch]);
 
     if (!songs) {
@@ -25,9 +31,8 @@ const SongsListFull = () => {
                     return (
                         <li key={song.id} className='song-card'>
                             <div className='card-img-wrapper' style={{backgroundImage:'url(' + song.imageUrl + ')'}}>
-                                {/* <img src={song.imageUrl} alt='song art' /> */}
                                 <div className='play-action-overlay'>
-                                    <button>Play</button>
+                                    <button onClick={() => playSongBtn(song)}>Play</button>
                                 </div>
                             </div>
                             <Link to={{pathname: `/songs/${song.id}`}}>

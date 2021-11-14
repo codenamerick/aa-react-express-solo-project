@@ -1,30 +1,34 @@
 import React from 'react';
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
+import { useSelector } from 'react-redux';
 import './Player.css';
 
-// const AudioPlayer = () => {
-//     return (
-//         <div className='audio-player-wrapper'>
-//             <div>
-//                 <h2>Audio Player</h2>
-//                 <figure>
-//                     <audio controls src='https://res.cloudinary.com/dedpxzbak/video/upload/v1636519427/X-POISON_Prod._DT_Hitz_x_Nick_Mira_ptnxta.mp3'>
-//                         Your browser does not support the <code>audio</code> element.
-//                     </audio>
-//                 </figure>
-//             </div>
-//         </div>
-//     );
-// };
+const Player = () => {
+    const song = useSelector(state => (state.player.song));
+    // const songObj = useSelector(state => (state.songs));
+    console.log('SONG FROM PLAYER______: ', song);
 
-const Player = () => (
-    <AudioPlayer
-        autoPlay
-        src = 'https://res.cloudinary.com/dedpxzbak/video/upload/v1636519427/X-POISON_Prod._DT_Hitz_x_Nick_Mira_ptnxta.mp3'
-        onPlay={e => console.log('onPlay')}
-    />
-);
+    if (!song) return null;
+
+    return (
+        <div className='audio-player-wrapper'>
+            <AudioPlayer
+                className='tester'
+                autoPlay
+                src={song.songUrl}
+                onPlay={e => console.log('onPlay')}
+            />
+            <div className='player-content-wrapper'>
+                <div className='song-art-sm' style={{backgroundImage:'url(' + song.imageUrl + ')'}}></div>
+                <div className='song-details-sm'>
+                    <p className='song-username-sm'>{song.User.username}</p>
+                    <p className='song-title-sm'>{song.title}</p>
+                </div>
+            </div>
+        </div>
+    );
+};
 
 
 
