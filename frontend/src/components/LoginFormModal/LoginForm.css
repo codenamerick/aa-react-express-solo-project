@@ -27,7 +27,7 @@ form .input-wrapper {
     margin-bottom: 10px;
 }
 
-form .input-wrapper input {
+form .input-wrapper input, form .input-wrapper textarea {
     border: 1px solid #C4C4C4;
     padding: 7px 6px;
     border-radius: 4px;
@@ -39,6 +39,14 @@ form .input-wrapper label {
     margin-bottom: 3px;
 }
 
-form .input-wrapper input:focus {
+form .input-wrapper input:focus, form .input-wrapper textarea:focus {
     border: 1px solid #E916C7;
+}
+
+form .input-wrapper textarea {
+    max-height: 100px;
+    min-height: 33px;
+    max-width: 100%;
+    min-width: 100%;
+    width: 100%;
 }

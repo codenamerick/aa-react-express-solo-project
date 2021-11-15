@@ -6,6 +6,7 @@ import SongDelete from '../SongDelete';
 import { playSong } from '../../store/player';
 import './UserProfile.css';
 import SongsListFull from '../SongsListFull';
+import ProfileEditBtn from './ProfileEditBtn';
 
 const UserProfile = () => {
     const {userId} = useParams();
@@ -50,7 +51,7 @@ const UserProfile = () => {
     if (currentUser?.id == userId) {
         profileEditBtns = (
             <>
-                <button>Edit Profile</button>
+                <ProfileEditBtn />
             </>
         );
         console.log('profile btn---------!!')
@@ -76,7 +77,7 @@ const UserProfile = () => {
 
     return (
         <div className='songs-list-full-wrapper user-profile-wrapper'>
-            <div className='profile-image-lrg' style={{backgroundImage:'url(https://res.cloudinary.com/dedpxzbak/image/upload/v1636973709/amir-seilsepour-5vg_SarQimA-unsplash_q2wbgx.jpg)'}}></div>
+            <div className='profile-image-lrg' style={{backgroundImage:'url(' + userObj?.profileImageUrl + ')'}}></div>
             <h1>{userObj?.username}</h1>
             <p>Thanks for stopping by. Hope you enjoy my latest uploads.</p>
             {profileEditBtns}

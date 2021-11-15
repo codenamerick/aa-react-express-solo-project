@@ -50,7 +50,6 @@
     position: absolute;
     transition: all 250ms;
     width: 100%;
-    z-index: 1;
 }
 
 .play-action-overlay:hover {

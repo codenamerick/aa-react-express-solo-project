@@ -47,9 +47,31 @@ router.get('/', asyncHandler(async (req, res) => {
     })
 }));
 
+// edit profile
+router.put('/:id(\\d+)', requireAuth, validateSignup, asyncHandler(async (req, res) => {
+    const user = req.body;
+    const updatedUser = await User.findByPk(req.params.id);
+
+    if (user) {
+        updatedUser.username = user.username;
+        updatedUser.profileImageUrl = user.profileImageUrl;
+        updatedUser.bio = user.bio;
+
+        await updatedUser.save();
+
+        return res.json({
+            updatedUser,
+            message: 'Success'
+        });
+    } else {
+        res.json({message: 'Failure'});
+    }
+}));
+
 // sign-up router below
 router.post('/', validateSignup, asyncHandler(async (req, res) => {
     const {email, password, username, profileImageUrl, bio} = req.body;
+    console.log('req.bdy!!!!!', req.body);
     const user = await User.signup({email, password, username, profileImageUrl, bio});
 
     await setTokenCookie(res, user);

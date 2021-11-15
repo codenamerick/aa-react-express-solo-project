@@ -2,7 +2,7 @@
     align-items: center;
     display: flex;
     flex-direction: column;
-    padding: 140px 20px 20px;
+    padding: 140px 20px 96px 20px;
 }
 
 .profile-image-lrg {
@@ -19,9 +19,15 @@
 }
 
 .user-profile-wrapper > p {
+    margin-bottom: 28px;
     max-width: 400px;
 }
 
 .user-profile-wrapper button {
-    margin: 16px 0 40px;
+    margin-bottom: 40px;
+}
+
+.modal-cancel-btn {
+    margin-top: 10px;
+    text-align: center;
 }

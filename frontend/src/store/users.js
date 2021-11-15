@@ -1,10 +1,16 @@
 import {csrfFetch} from './csrf';
 
 export const LOAD_USERS = 'users/LOAD_USERS';
+export const UPDATE_USER = 'users/UPDATE_USER';
 
 export const loadUsers = (list) => ({
     type: LOAD_USERS,
     list
+});
+
+const updateUser = (user) => ({
+    type: UPDATE_USER,
+    user
 });
 
 export const getAllUsers = () => async (dispatch) => {
@@ -15,6 +21,25 @@ export const getAllUsers = () => async (dispatch) => {
         dispatch(loadUsers(list.users));
     }
 };
+
+export const editUser = (data) => async (dispatch) => {
+    console.log('ROUTE USER DATA: ', data.userId);
+    const res = await csrfFetch(`/api/users/${data.userId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    });
+
+    if (res.ok) {
+        const user = await res.json();
+        dispatch(updateUser(user));
+        return res;
+    }
+};
+
+
 
 let newState = {
     users: null
@@ -30,6 +55,11 @@ const usersReducer = (state = {}, action) => {
             });
 
             return newState;
+        case UPDATE_USER:
+            return {
+                ...state,
+                [action.user.updatedUser.id]: action.user.updatedUser
+            }
         default:
             return state;
     }
