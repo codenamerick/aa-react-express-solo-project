@@ -38,3 +38,8 @@ button:hover, .main-btn:hover {
     color: #0F1010;
     cursor: pointer;
 }
+
+.temp-spacer {
+    height: 45px;
+    width: 100%;
+}

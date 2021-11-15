@@ -123,6 +123,15 @@ nav ul {
     border: none !important;
 }
 
+.profile-dropdown a {
+    color: #0F1010;
+    transition: all 250ms;
+}
+
+.profile-dropdown a:hover {
+    color: #E916C7;
+}
+
 /* --- Media queries below --- */
 
 @media screen and (max-width: 1260px) {

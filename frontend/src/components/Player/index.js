@@ -7,7 +7,9 @@ import './Player.css';
 
 const Player = () => {
     const song = useSelector(state => (state.player.song));
-    // const songObj = useSelector(state => (state.songs));
+    const allSongs = useSelector(state => Object.entries((state.songs)));
+    console.log('PLAYER ONE SONG ------: ', song);
+    console.log('PLAYER ALL SONGS ------: ', allSongs);
 
     if (!song) return null;
 
@@ -24,8 +26,8 @@ const Player = () => {
                 <div className='song-details-sm'>
                     <p className='song-username-sm'>{song.User.username}</p>
                     <Link className='song-link-text song-title-sm' to={{pathname: `/songs/${song.id}`}}>
-                                <p>{song.title}</p>
-                            </Link>
+                        <p>{song.title}</p>
+                    </Link>
                 </div>
             </div>
         </div>
