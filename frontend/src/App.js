@@ -3,18 +3,21 @@ import {Switch, Route} from 'react-router-dom';
 import { useDispatch } from "react-redux";
 import Navigation from './components/Navigation';
 import * as sessionActions from './store/session';
+import { getAllSongs } from "./store/songs";
 import MainHero from "./components/MainHero";
 import SongsListFull from "./components/SongsListFull";
 import SongPortalFull from "./components/SongPortalFull";
 import UploadSong from "./components/UploadSong";
 import SongEdit from "./components/SongEdit";
 import Player from "./components/Player";
+import PageNotFound from "./components/PageNotFound";
 
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
+    dispatch(getAllSongs());
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
@@ -41,7 +44,7 @@ function App() {
               <UploadSong />
             </Route>
             <Route path= '/'>
-              <p>Page Not Found</p>
+              <PageNotFound />
             </Route>
           </Switch>
           <Player />

@@ -8,7 +8,7 @@ const MainHero = () => {
             <div>
                 <h2>Discover more with SoundWave</h2>
                 <p>SoundWave lets you listen online, ad-free, with over 150 million tracks — and growing.</p>
-                <Link to='/'>Start uploading today</Link>
+                <Link to='/upload'>Start uploading today</Link>
             </div>
         </div>
     );

@@ -30,3 +30,8 @@
 .songs-form .form-btn-wrapper {
     text-align: center;
 }
+
+.songs-form h2 {
+    margin-bottom: 32px;
+    text-align: center;
+}

@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import * as songActions from '../../store/songs';
 import { useHistory } from 'react-router';
+import {Link} from 'react-router-dom';
 import './UploadSong.css';
 
 const UploadForm = () => {
@@ -45,6 +46,7 @@ const UploadForm = () => {
 
     return (
         <div>
+            <h2>Upload Your New Song Below.</h2>
             <form onSubmit={handleSubmit}>
                 <ul>
                     {errors.map((error, index) => (
@@ -65,6 +67,7 @@ const UploadForm = () => {
                 </div>
                 <div className='form-btn-wrapper'>
                     <button>Upload</button>
+                    <Link className='main-btn' to={'/'}>Cancel</Link>
                 </div>
             </form>
         </div>

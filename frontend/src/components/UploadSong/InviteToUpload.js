@@ -3,8 +3,8 @@ import './UploadSong.css';
 
 const InviteToUpload = () => {
     return (
-        <div>
-            <h1>Would you like to sign up?</h1>
+        <div className='invite-content-wrapper'>
+            <h1>Hey there! Log In or Sign Up to upload now.</h1>
         </div>
     );
 };

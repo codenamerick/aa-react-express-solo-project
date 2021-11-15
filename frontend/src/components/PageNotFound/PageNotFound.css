@@ -1,0 +1,25 @@
+.not-found-wrapper {
+    align-items: center;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    padding: 20px;
+    width: 100%;
+}
+
+.not-found-wrapper > div {
+    max-width: 750px;
+}
+
+.not-found-wrapper img {
+    width: 100%;
+}
+
+.not-found-wrapper h2 {
+    margin-bottom: 28px;
+    text-align: center;
+}
+
+.not-found-wrapper a {
+    color: #E916C7;
+}

@@ -34,7 +34,7 @@ const SongPortalFull = () => {
     if (songObj?.User.id === user?.id) {
         songEditBtns = (
             <>
-                <button onClick={() => handleEditBtn(songId)}>Edit</button>
+                <button className='portal-edit-btn' onClick={() => handleEditBtn(songId)}>Edit</button>
                 <SongDelete songId = {songId}/>
             </>
         );

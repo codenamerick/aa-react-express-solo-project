@@ -62,3 +62,7 @@
     flex-direction: column;
     justify-content: space-between;
 }
+
+.portal-edit-btn {
+    margin-right: 10px;
+}
