@@ -37,10 +37,10 @@ const Navigation = ({isLoaded}) => {
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink exact to='/'>Link</NavLink>
+                            <NavLink exact to='/songs'>All Songs</NavLink>
                         </li>
                         <li>
-                            <NavLink exact to='/'>Link</NavLink>
+                            <NavLink exact to='/upload'>Upload</NavLink>
                         </li>
                     </ul>
                 </div>

@@ -1,0 +1,33 @@
+.user-profile-wrapper {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding: 140px 20px 96px 20px;
+}
+
+.profile-image-lrg {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 50%;
+    height: 300px;
+    width: 300px;
+}
+
+.user-profile-wrapper h1 {
+    margin: 20px 0;
+}
+
+.user-profile-wrapper > p {
+    margin-bottom: 28px;
+    max-width: 400px;
+}
+
+.user-profile-wrapper button {
+    margin-bottom: 40px;
+}
+
+.modal-cancel-btn {
+    margin-top: 10px;
+    text-align: center;
+}

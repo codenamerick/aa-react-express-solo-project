@@ -14,11 +14,14 @@ module.exports = {
         references: { model: "Users" }
       },
       albumId: {
-        allowNull: false,
         type: Sequelize.INTEGER,
         references: { model: "Albums" }
       },
-      url: {
+      imageUrl: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+      songUrl: {
         allowNull: false,
         type: Sequelize.STRING
       },

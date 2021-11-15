@@ -1,8 +1,10 @@
 nav {
     background: #fff;
+    box-shadow: 0 10px 25px rgb(0 0 0 / 30%), 0 20px 48px rgb(0 0 0 / 16%), 0 1px 4px rgb(0 0 0 / 12%);
     position: fixed;
     top: 0%;
     width: 100%;
+    z-index: 10;
 }
 
 nav > div {
@@ -25,6 +27,7 @@ nav ul {
 
 .nav-left a {
     border-right: 1px solid #0F1010;
+    color: #0F1010;
     padding:12px 20px;
     transition: all 250ms;
 }
@@ -118,6 +121,15 @@ nav ul {
 
 .profile-dropdown button:hover {
     border: none !important;
+}
+
+.profile-dropdown a {
+    color: #0F1010;
+    transition: all 250ms;
+}
+
+.profile-dropdown a:hover {
+    color: #E916C7;
 }
 
 /* --- Media queries below --- */

@@ -23,6 +23,14 @@ module.exports = (sequelize, DataTypes) => {
         len: [3, 255]
       },
     },
+    profileImageUrl: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    bio: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     hashedPassword: {
       type: DataTypes.STRING.BINARY,
       allowNull: false,
@@ -49,8 +57,8 @@ module.exports = (sequelize, DataTypes) => {
     },
   });
   User.prototype.toSafeObject = function() {
-    const {id, username, email} = this;
-    return {id, username, email};
+    const {id, username, profileImageUrl, bio, email} = this;
+    return {id, username, profileImageUrl, bio, email};
   }
 
   User.prototype.validatePassword = function(password) {
@@ -77,11 +85,14 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
 
-  User.signup = async function ({username, email, password}) {
+  User.signup = async function ({username, email, profileImageUrl,
+    bio, password}) {
     const hashedPassword = bcrypt.hashSync(password);
     const user = await User.create({
       username,
       email,
+      profileImageUrl,
+      bio,
       hashedPassword,
     });
 

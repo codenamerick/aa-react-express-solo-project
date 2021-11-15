@@ -7,9 +7,12 @@ module.exports = (sequelize, DataTypes) => {
     },
     albumId: {
       type: DataTypes.INTEGER,
+    },
+    imageUrl: {
+      type: DataTypes.STRING,
       allowNull: false
     },
-    url: {
+    songUrl: {
       type: DataTypes.STRING,
       allowNull: false
     },
@@ -21,8 +24,8 @@ module.exports = (sequelize, DataTypes) => {
   Song.associate = function(models) {
     // associations can be defined here
     Song.hasMany(models.Comment, {foreignKey: 'songId', onDelete: 'CASCADE', hooks: true});
-    Song.belongsTo(models.User, {foreignKey: 'userId', onDelete: 'CASCADE', hooks: true});
-    Song.belongsTo(models.Album, {foreignKey: 'albumId', onDelete: 'CASCADE', hooks: true});
+    Song.belongsTo(models.User, {foreignKey: 'userId'});
+    Song.belongsTo(models.Album, {foreignKey: 'albumId'});
   };
   return Song;
 };

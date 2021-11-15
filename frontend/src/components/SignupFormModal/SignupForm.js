@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import * as sessionActions from '../../store/session';
 import { useDispatch } from "react-redux";
 
@@ -6,6 +6,8 @@ const SignupForm = () => {
     const dispatch = useDispatch();
     const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
+    const [profileImageUrl, setProfileImageUrl] = useState('');
+    const [bio, setBio] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [errors, setErrors] = useState([]);
@@ -21,7 +23,9 @@ const SignupForm = () => {
             return dispatch(sessionActions.signup({
                 email,
                 username,
-                password,
+                profileImageUrl,
+                bio,
+                password
             }))
                 .catch(async (res) => {
                     const data = await res.json();
@@ -49,6 +53,14 @@ const SignupForm = () => {
             <div className='input-wrapper'>
                 <label>Username</label>
                 <input type='type' value={username} onChange={(e) => setUsername(e.target.value)} required />
+            </div>
+            <div className='input-wrapper'>
+                <label htmlFor='profileImageUrl'>Profile Image Url</label>
+                <input type='text' name='profileImageUrl' value={profileImageUrl} onChange={(e) => setProfileImageUrl(e.target.value)} required />
+            </div>
+            <div className='input-wrapper'>
+                <label htmlFor='bio'>Bio</label>
+                <textarea name='bio' value={bio} onChange={(e) => setBio(e.target.value)} required ></textarea>
             </div>
             <div className='input-wrapper'>
                 <label>Password</label>
