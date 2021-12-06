@@ -7,10 +7,6 @@
     padding: 0;
 }
 
-/* body {
-    background: #0F1010;
-} */
-
 a {
     text-decoration: none;
 }
@@ -28,10 +24,6 @@ button, .main-btn {
     padding: 7px 8px;
     transition: all 250ms;
 }
-
-/* .main-btn {
-    font-size: 14px;
-} */
 
 button:hover, .main-btn:hover {
     background: #fff;

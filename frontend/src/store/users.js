@@ -15,7 +15,6 @@ const updateUser = (user) => ({
 
 export const getAllUsers = () => async (dispatch) => {
     const res = await csrfFetch('/api/users');
-    console.log('THIS IS ACTION----: ', res)
     if (res.ok) {
         const list = await res.json();
         dispatch(loadUsers(list.users));
@@ -23,7 +22,6 @@ export const getAllUsers = () => async (dispatch) => {
 };
 
 export const editUser = (data) => async (dispatch) => {
-    console.log('ROUTE USER DATA: ', data.userId);
     const res = await csrfFetch(`/api/users/${data.userId}`, {
         method: 'PUT',
         headers: {
@@ -48,7 +46,6 @@ let newState = {
 const usersReducer = (state = {}, action) => {
     switch (action.type) {
         case LOAD_USERS:
-            // console.log('THIS IS ACTION----: ', action)
             newState = {...state};
             action.list.forEach((user) => {
                 newState[user.id] = user;

@@ -9,10 +9,6 @@ const SongEdit = () => {
     const sessionUser = useSelector(state => state.session.user);
     const song = useSelector(state => (state.songs[songId]));
 
-    console.log('Song id from song edit: ', songId);
-    console.log('EDIT PAGE SONG STATE---:', song);
-
-    console.log(sessionUser);
     let editForm;
     let notFound;
 

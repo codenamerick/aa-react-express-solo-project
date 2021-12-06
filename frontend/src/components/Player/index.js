@@ -7,9 +7,7 @@ import './Player.css';
 
 const Player = () => {
     const song = useSelector(state => (state.player.song));
-    const allSongs = useSelector(state => Object.entries((state.songs)));
-    console.log('PLAYER ONE SONG ------: ', song);
-    console.log('PLAYER ALL SONGS ------: ', allSongs);
+    // const allSongs = useSelector(state => Object.entries((state.songs)));
 
     if (!song) return null;
 
@@ -19,7 +17,7 @@ const Player = () => {
                 className='tester'
                 autoPlay
                 src={song.songUrl}
-                onPlay={e => console.log('onPlay')}
+                // onPlay={e => console.log('onPlay')}
             />
             <div className='player-content-wrapper'>
                 <div className='song-art-sm' style={{backgroundImage:'url(' + song.imageUrl + ')'}}></div>

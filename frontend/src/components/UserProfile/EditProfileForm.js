@@ -1,22 +1,17 @@
-import React, {useEffect, useState} from "react";
-import * as sessionActions from '../../store/session';
+import React, {useState} from "react";
 import * as userActions from '../../store/users';
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams } from "react-router";
-import { Link } from "react-router-dom";
+// import { useHistory } from "react-router";
 
-const SignupForm = () => {
-    // const userId = useParams();
+const EditUserForm = () => {
     const sessionUser = useSelector(state => state.session.user);
     const dispatch = useDispatch();
     const [username, setUsername] = useState('');
     const [profileImageUrl, setProfileImageUrl] = useState('');
     const [bio, setBio] = useState('');
     const [errors, setErrors] = useState([]);
-    const history = useHistory();
+    // const history = useHistory();
     const userId = sessionUser.id;
-
-    console.log('USER PAGE ID------: ', sessionUser);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -24,13 +19,12 @@ const SignupForm = () => {
         setErrors([]);
 
 
-        dispatch(userActions.editUser({
+        return dispatch(userActions.editUser({
             userId,
             username,
             profileImageUrl,
             bio,
         }))
-            .then(() => history.push(`/users/${sessionUser.id}`))
             .catch(async (res) => {
                 const data = await res.json();
 
@@ -38,8 +32,6 @@ const SignupForm = () => {
                     setErrors(data.errors);
                 }
             });
-
-        // return setErrors(['Password and Confirm Password must match']);
     };
 
     return (
@@ -63,10 +55,11 @@ const SignupForm = () => {
             </div>
             <button>Save Profile</button>
             {/* <Link className='main-btn modal-cancel-btn' to={{pathname: `/users/${sessionUser.id}`}}>Cancel</Link> */}
+            {/* <button>Cancel</button> */}
         </form>
     );
 };
 
 
 
-export default SignupForm;
+export default EditUserForm;

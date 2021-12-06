@@ -15,7 +15,6 @@ const SongsListFull = () => {
     }, [dispatch]);
 
     const playSongBtn = useCallback((song) => {
-        console.log('SONG URL!---: ', song);
         dispatch(playSong(song));
     }, [dispatch]);
 

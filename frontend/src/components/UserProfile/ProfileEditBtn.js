@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import {Modal} from '../../context/Modal';
-import EditProfileForm from './EditProfileForm';
+import EditUserForm from './EditProfileForm';
 
-const ProfileEditBtn = () => {
+const EditUserFormModal = () => {
     const [showModal, setShowModal] = useState(false);
 
     return (
@@ -10,11 +10,11 @@ const ProfileEditBtn = () => {
             <button onClick={() => setShowModal(true)}>Edit Profile</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <EditProfileForm />
+                    <EditUserForm />
                 </Modal>
             )}
         </>
     );
 };
 
-export default ProfileEditBtn;
+export default EditUserFormModal;

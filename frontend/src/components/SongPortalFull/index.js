@@ -17,12 +17,6 @@ const SongPortalFull = () => {
         dispatch(getAllSongs());
     }, [dispatch, songId]);
 
-    if (!song.songId) {
-        console.log('THERE ARE NO SONGS');
-    } else {
-        console.log('not empty!!!!!');
-    }
-
     const songObj = song[songId];
 
     const handleEditBtn = (songId) => {
@@ -38,12 +32,9 @@ const SongPortalFull = () => {
                 <SongDelete songId = {songId}/>
             </>
         );
-    } else {
-        console.log('not winning :(');
     }
 
     const playSongBtn = useCallback((songObj) => {
-        console.log('SONG URL FROM SINGLE!---: ', songObj);
         dispatch(playSong(songObj));
     }, [dispatch]);
 
@@ -65,7 +56,6 @@ const SongPortalFull = () => {
                     </div>
                 </div>
                 <div className='song-img-lrg' style={{backgroundImage:'url(' + songObj?.imageUrl + ')'}}>
-                    {/* <img src={songObj?.imageUrl} alt='song art' /> */}
                 </div>
             </div>
         </div>
