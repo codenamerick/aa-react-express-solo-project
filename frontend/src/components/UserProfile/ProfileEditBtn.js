@@ -10,7 +10,7 @@ const EditUserFormModal = () => {
             <button onClick={() => setShowModal(true)}>Edit Profile</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <EditUserForm />
+                    <EditUserForm setShowModal={setShowModal}/>
                 </Modal>
             )}
         </>

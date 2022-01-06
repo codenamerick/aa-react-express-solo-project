@@ -3,12 +3,12 @@ import * as userActions from '../../store/users';
 import { useDispatch, useSelector } from "react-redux";
 // import { useHistory } from "react-router";
 
-const EditUserForm = () => {
+const EditUserForm = ({setShowModal}) => {
     const sessionUser = useSelector(state => state.session.user);
     const dispatch = useDispatch();
-    const [username, setUsername] = useState('');
-    const [profileImageUrl, setProfileImageUrl] = useState('');
-    const [bio, setBio] = useState('');
+    const [username, setUsername] = useState(sessionUser.username);
+    const [profileImageUrl, setProfileImageUrl] = useState(sessionUser.profileImageUrl);
+    const [bio, setBio] = useState(sessionUser.bio);
     const [errors, setErrors] = useState([]);
     // const history = useHistory();
     const userId = sessionUser.id;
@@ -19,7 +19,7 @@ const EditUserForm = () => {
         setErrors([]);
 
 
-        return dispatch(userActions.editUser({
+        dispatch(userActions.editUser({
             userId,
             username,
             profileImageUrl,
@@ -32,6 +32,8 @@ const EditUserForm = () => {
                     setErrors(data.errors);
                 }
             });
+
+        setShowModal(false)
     };
 
     return (
