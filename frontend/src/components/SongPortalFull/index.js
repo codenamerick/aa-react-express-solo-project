@@ -1,6 +1,6 @@
 import {useCallback, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {useParams, useHistory} from 'react-router-dom';
+import {useParams, useHistory, Link} from 'react-router-dom';
 import { getAllSongs } from '../../store/songs';
 import SongDelete from '../SongDelete';
 import { playSong } from '../../store/player';
@@ -48,7 +48,9 @@ const SongPortalFull = () => {
                         </button>
                         <div>
                             <h2>{songObj?.title}</h2>
-                            <h3>{songObj?.User.username}</h3>
+                            <Link class='song-hero-link' to={{pathname: `/users/${songObj?.User.id}`}}>
+                                <h3>{songObj?.User.username}</h3>
+                            </Link>
                         </div>
                     </div>
                     <div>
