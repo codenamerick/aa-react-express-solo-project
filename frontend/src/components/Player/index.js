@@ -22,7 +22,7 @@ const Player = () => {
             <div className='player-content-wrapper'>
                 <div className='song-art-sm' style={{backgroundImage:'url(' + song.imageUrl + ')'}}></div>
                 <div className='song-details-sm'>
-                    <p className='song-username-sm'>{song.User.username}</p>
+                    <Link className='song-username-sm' to={{pathname: `/users/${song.User.id}`}}>{song.User.username}</Link>
                     <Link className='song-link-text song-title-sm' to={{pathname: `/songs/${song.id}`}}>
                         <p>{song.title}</p>
                     </Link>
