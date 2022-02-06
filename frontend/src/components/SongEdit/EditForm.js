@@ -9,17 +9,12 @@ const EditForm = () => {
     const userId = sessionUser.id;
     const dispatch = useDispatch();
     const {songId} = useParams();
-    const [title, setTitle] = useState('');
-    const [imageUrl, setImageUrl] = useState('');
-    const [songUrl, setSongUrl] = useState('');
+    const song = useSelector(state => state.songs[`${songId}`]);
+    const [title, setTitle] = useState(song.title);
+    const [imageUrl, setImageUrl] = useState(song.imageUrl);
+    const [songUrl, setSongUrl] = useState(song.songUrl);
     const [errors, setErrors] = useState([]);
     const history = useHistory();
-
-    // const reset = () => {
-    //     setTitle('');
-    //     setImageUrl('');
-    //     setSongUrl('');
-    // };
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -41,8 +36,6 @@ const EditForm = () => {
                     setErrors(data.errors);
                 }
             });
-
-        // reset();
     };
 
     return (

@@ -48,7 +48,7 @@ const SongPortalFull = () => {
                         </button>
                         <div>
                             <h2>{songObj?.title}</h2>
-                            <Link class='song-hero-link' to={{pathname: `/users/${songObj?.User.id}`}}>
+                            <Link className='song-hero-link' to={{pathname: `/users/${songObj?.User.id}`}}>
                                 <h3>{songObj?.User.username}</h3>
                             </Link>
                         </div>
