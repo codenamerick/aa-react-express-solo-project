@@ -39,7 +39,7 @@ const SongsListFull = () => {
                             <Link className='song-link-text' to={{pathname: `/songs/${song.id}`}}>
                                 <p>{song.title}</p>
                             </Link>
-                            <p className='song-user-link-text'>{song.User?.username}</p>
+                            <Link className='song-user-link-text' to={{pathname: `/users/${song.User?.id}`}}>{song.User?.username}</Link>
                         </li>
                     );
                 })}
