@@ -23,6 +23,7 @@ button, .main-btn {
     font-size: 14px;
     padding: 7px 8px;
     transition: all 250ms;
+    white-space: nowrap;
 }
 
 button:hover, .main-btn:hover {

@@ -17,8 +17,13 @@ nav > div {
 }
 
 nav ul {
-    align-items: center;
+    align-items: stretch;
     display: flex;
+}
+
+.nav-left {
+    display: flex;
+    width: 100%;
 }
 
 .nav-left li {
@@ -63,6 +68,7 @@ nav ul {
 }
 
 .nav-right li {
+    display: flex;
     position: relative;
 }
 
@@ -82,14 +88,21 @@ nav ul {
 }
 
 .profile-btn {
-    align-items: center;
+    /* align-items: center; */
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
     border: none;
-    display: flex;
-    font-size: 34px;
+    border-radius: 50%;
+    /* display: flex; */
+    /* font-size: 34px; */
     padding: 0;
     position: relative;
     transition: all 250ms;
     z-index: 1;
+
+    height: 34px;
+    width: 34px;
 }
 
 .profile-btn:hover {

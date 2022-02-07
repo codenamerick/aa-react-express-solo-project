@@ -6,6 +6,7 @@ import LoginFormModal from '../LoginFormModal';
 import './Navigation.css';
 import SignupFormModal from '../SignupFormModal';
 import DemoUser from '../DemoUser/DemoUser';
+import Search from '../Search';
 
 const Navigation = ({isLoaded}) => {
     const sessionUser = useSelector(state => state.session.user);
@@ -43,6 +44,7 @@ const Navigation = ({isLoaded}) => {
                             <NavLink exact to='/upload'>Upload</NavLink>
                         </li>
                     </ul>
+                    <Search />
                 </div>
                 <div className='nav-right'>
                     <ul>

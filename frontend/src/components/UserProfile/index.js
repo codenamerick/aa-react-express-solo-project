@@ -35,6 +35,10 @@ const UserProfile = () => {
         dispatch(playSong(songObj));
     }, [dispatch]);
 
+    filteredSongs?.sort((a, b) => {
+        return b.id - a.id;
+    })
+
     return (
         <div className='songs-list-full-wrapper user-profile-wrapper'>
             <div className='profile-image-lrg' style={{backgroundImage:'url(' + userObj?.profileImageUrl + ')'}}></div>
@@ -55,7 +59,7 @@ const UserProfile = () => {
                             <Link className='song-link-text' to={{pathname: `/songs/${song.id}`}}>
                                 <p>{song.title}</p>
                             </Link>
-                            <p className='song-user-link-text'>{song.User?.username}</p>
+                            <Link className='song-user-link-text' to={{pathname: `/users/${song.User?.id}`}}>{song.User?.username}</Link>
                         </li>
                     );
                 })}

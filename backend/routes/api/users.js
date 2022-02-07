@@ -12,31 +12,33 @@ const router = express.Router();
 
 const validateSignup = [
     check('email')
-        .exists({checkFalsy: true})
-        .isEmail()
+        // .exists({checkFalsy: true})
+        // .isEmail()
+        .matches(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)
         .withMessage('Please provide a valid email.'),
     check('username')
-        .exists({checkFalsy: true})
+        // .exists({checkFalsy: true})
         .isLength({min: 4})
         .withMessage('Please provide a username with at least 4 characters.'),
     check('username')
         .not()
         .isEmail()
         .withMessage('Username cannot be an email.'),
-    check('password')
-        .exists({checkFalsy: true})
-        .isLength({min: 6})
-        .withMessage('Password must be 6 characters or more.'),
     check('profileImageUrl')
-        .exists({checkFalsy: true})
-        .isURL()
-        .withMessage('Please provide a profile image url.'),
+        // .exists({checkFalsy: true})
+        // .isURL()
+        .matches(/(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/)
+        .withMessage('Please provide an image url that ends with jpg, gif, or png.'),
     check('bio')
-        .exists({checkFalsy: true})
+        // .exists({checkFalsy: true})
         .isLength({min: 4})
         .withMessage('Please provide a short bio with at least 4 characters.'),
+    check('password')
+        // .exists({checkFalsy: true})
+        .isLength({min: 6})
+        .withMessage('Password must be 6 characters or more.'),
     handleValidationErrors,
-];
+    ];
 
 const validateEditProfile = [
     check('username')

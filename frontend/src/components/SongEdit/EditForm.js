@@ -9,17 +9,12 @@ const EditForm = () => {
     const userId = sessionUser.id;
     const dispatch = useDispatch();
     const {songId} = useParams();
-    const [title, setTitle] = useState('');
-    const [imageUrl, setImageUrl] = useState('');
-    const [songUrl, setSongUrl] = useState('');
+    const song = useSelector(state => state.songs[`${songId}`]);
+    const [title, setTitle] = useState(song.title);
+    const [imageUrl, setImageUrl] = useState(song.imageUrl);
+    const [songUrl, setSongUrl] = useState(song.songUrl);
     const [errors, setErrors] = useState([]);
     const history = useHistory();
-
-    // const reset = () => {
-    //     setTitle('');
-    //     setImageUrl('');
-    //     setSongUrl('');
-    // };
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -41,8 +36,6 @@ const EditForm = () => {
                     setErrors(data.errors);
                 }
             });
-
-        // reset();
     };
 
     return (
@@ -56,15 +49,15 @@ const EditForm = () => {
                 </ul>
                 <div className='input-wrapper'>
                     <label htmlFor='title'>Title</label>
-                    <input type='text' name='title' value={title} onChange={(e) => setTitle(e.target.value)} required />
+                    <input type='text' name='title' value={title} onChange={(e) => setTitle(e.target.value)} />
                 </div>
                 <div className='input-wrapper'>
                     <label htmlFor='imageUrl'>Image Url</label>
-                    <input type='text' name='imageUrl' value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} required />
+                    <input type='text' name='imageUrl' value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} />
                 </div>
                 <div className='input-wrapper'>
                     <label htmlFor='songUrl'>Song Url</label>
-                    <input type='text' name='songUrl' value={songUrl} onChange={(e) => setSongUrl(e.target.value)} required />
+                    <input type='text' name='songUrl' value={songUrl} onChange={(e) => setSongUrl(e.target.value)} />
                 </div>
                 <div className='form-btn-wrapper'>
                     <button>Save</button>

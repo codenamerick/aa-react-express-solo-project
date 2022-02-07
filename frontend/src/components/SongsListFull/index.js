@@ -22,6 +22,10 @@ const SongsListFull = () => {
         return null;
     }
 
+    songs?.sort((a, b) => {
+        return b.id - a.id;
+    })
+
     return (
         <div className='songs-list-full-wrapper'>
             <h2>Listen to the latest uploads below.</h2>
@@ -39,7 +43,7 @@ const SongsListFull = () => {
                             <Link className='song-link-text' to={{pathname: `/songs/${song.id}`}}>
                                 <p>{song.title}</p>
                             </Link>
-                            <p className='song-user-link-text'>{song.User?.username}</p>
+                            <Link className='song-user-link-text' to={{pathname: `/users/${song.User?.id}`}}>{song.User?.username}</Link>
                         </li>
                     );
                 })}

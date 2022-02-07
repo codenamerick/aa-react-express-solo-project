@@ -33,8 +33,8 @@ const ProfileButton = ({user}) => {
 
     return (
         <>
-            <button onClick={openMenu} className='profile-btn'>
-                <i className='fas fa-user-circle' />
+            <button onClick={openMenu} style={{backgroundImage:'url(' + user?.profileImageUrl + ')'}} className='profile-btn'>
+                {/* <i className='fas fa-user-circle' /> */}
             </button>
             {showMenu && (
                 <ul className='profile-dropdown'>

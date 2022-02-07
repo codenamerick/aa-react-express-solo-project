@@ -36,11 +36,11 @@ const LoginForm = () => {
             </ul>
             <div className='input-wrapper'>
                 <label htmlFor='credential'>Username or Email</label>
-                <input type='text' name='credential' value={credential} onChange={(e) => setCredential(e.target.value)} required />
+                <input type='text' name='credential' value={credential} onChange={(e) => setCredential(e.target.value)} />
             </div>
             <div className='input-wrapper'>
                 <label htmlFor='password'>Password</label>
-                <input type='password' name='password' value={password} onChange={(e) => setPassword(e.target.value)} required />
+                <input type='password' name='password' value={password} onChange={(e) => setPassword(e.target.value)} />
             </div>
             <button>Log In</button>
         </form>

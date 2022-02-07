@@ -13,19 +13,21 @@ const router = express.Router();
 
 
 const validateSong = [
-    check('imageUrl')
-        .exists({checkFalsy: true})
-        .isURL()
-        .withMessage('Please provide an image url.'),
-    check('songUrl')
-        .exists({checkFalsy: true})
-        .isURL()
-        .withMessage('Please provide a song url.'),
     check('title')
         .exists({checkFalsy: true})
         .not()
-        .isEmpty()
+        // .isEmpty()
         .withMessage('Please provide a title for your song.'),
+    check('imageUrl')
+        // .exists({checkFalsy: true})
+        // .isURL()
+        .matches(/(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/)
+        .withMessage('Please provide an image url that ends with jpg, gif, or png.'),
+    check('songUrl')
+        // .exists({checkFalsy: true})
+        // .isURL()
+        .matches(/(http(s?):)([/|.|\w|\s|-])*\.(?:mp3|m4a|wav)/)
+        .withMessage('Please provide a song url that ends with mp3, m4a, or wav.'),
     handleValidationErrors,
 ];
 

@@ -48,27 +48,27 @@ const SignupForm = () => {
             </ul>
             <div className='input-wrapper'>
                 <label>Email</label>
-                <input type='email' value={email} onChange={(e) => setEmail(e.target.value)} required />
+                <input type='email' value={email} onChange={(e) => setEmail(e.target.value)} />
             </div>
             <div className='input-wrapper'>
                 <label>Username</label>
-                <input type='type' value={username} onChange={(e) => setUsername(e.target.value)} required />
+                <input type='type' value={username} onChange={(e) => setUsername(e.target.value)} />
             </div>
             <div className='input-wrapper'>
                 <label htmlFor='profileImageUrl'>Profile Image Url</label>
-                <input type='text' name='profileImageUrl' value={profileImageUrl} onChange={(e) => setProfileImageUrl(e.target.value)} required />
+                <input type='text' name='profileImageUrl' value={profileImageUrl} onChange={(e) => setProfileImageUrl(e.target.value)} />
             </div>
             <div className='input-wrapper'>
                 <label htmlFor='bio'>Bio</label>
-                <textarea name='bio' value={bio} onChange={(e) => setBio(e.target.value)} required ></textarea>
+                <textarea name='bio' value={bio} onChange={(e) => setBio(e.target.value)} ></textarea>
             </div>
             <div className='input-wrapper'>
                 <label>Password</label>
-                <input type='password' value={password} onChange={(e) => setPassword(e.target.value)} required />
+                <input type='password' value={password} onChange={(e) => setPassword(e.target.value)} />
             </div>
             <div className='input-wrapper'>
                 <label>Confirm Password</label>
-                <input type='password' value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
+                <input type='password' value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
             </div>
             <button>Sign Up</button>
         </form>

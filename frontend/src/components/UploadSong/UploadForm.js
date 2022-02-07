@@ -32,7 +32,7 @@ const UploadForm = () => {
             imageUrl,
             songUrl
         }))
-            .then(() => history.push(`/songs`))
+            .then(() => history.push(`/users/${userId}`))
             .catch(async (res) => {
                 const data = await res.json();
 
@@ -55,15 +55,15 @@ const UploadForm = () => {
                 </ul>
                 <div className='input-wrapper'>
                     <label htmlFor='title'>Title</label>
-                    <input type='text' name='title' value={title} onChange={(e) => setTitle(e.target.value)} required />
+                    <input type='text' name='title' value={title} onChange={(e) => setTitle(e.target.value)} />
                 </div>
                 <div className='input-wrapper'>
                     <label htmlFor='imageUrl'>Image Url</label>
-                    <input type='text' name='imageUrl' value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} required />
+                    <input type='text' name='imageUrl' value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} />
                 </div>
                 <div className='input-wrapper'>
                     <label htmlFor='songUrl'>Song Url</label>
-                    <input type='text' name='songUrl' value={songUrl} onChange={(e) => setSongUrl(e.target.value)} required />
+                    <input type='text' name='songUrl' value={songUrl} onChange={(e) => setSongUrl(e.target.value)} />
                 </div>
                 <div className='form-btn-wrapper'>
                     <button>Upload</button>
