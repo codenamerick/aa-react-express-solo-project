@@ -35,6 +35,10 @@ const UserProfile = () => {
         dispatch(playSong(songObj));
     }, [dispatch]);
 
+    filteredSongs?.sort((a, b) => {
+        return b.id - a.id;
+    })
+
     return (
         <div className='songs-list-full-wrapper user-profile-wrapper'>
             <div className='profile-image-lrg' style={{backgroundImage:'url(' + userObj?.profileImageUrl + ')'}}></div>
