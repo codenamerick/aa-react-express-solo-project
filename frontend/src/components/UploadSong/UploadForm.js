@@ -32,7 +32,7 @@ const UploadForm = () => {
             imageUrl,
             songUrl
         }))
-            .then(() => history.push(`/songs`))
+            .then(() => history.push(`/users/${userId}`))
             .catch(async (res) => {
                 const data = await res.json();
 
