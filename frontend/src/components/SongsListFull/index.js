@@ -26,8 +26,6 @@ const SongsListFull = () => {
         return b.id - a.id;
     })
 
-    console.log(songs)
-
     return (
         <div className='songs-list-full-wrapper'>
             <h2>Listen to the latest uploads below.</h2>
