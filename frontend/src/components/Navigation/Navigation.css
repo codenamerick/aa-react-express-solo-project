@@ -21,6 +21,11 @@ nav ul {
     display: flex;
 }
 
+.nav-left {
+    display: flex;
+    width: 100%;
+}
+
 .nav-left li {
     display: flex;
 }
